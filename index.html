@@ -1,0 +1,4947 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gabriela Alcántara — Editorial Minimalist Portfolio</title>
+    <!-- Import stylesheet -->
+    <style>
+/* Import Google Fonts: Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap');
+
+:root {
+  --color-bg: #000000;
+  --color-fg: #ffffff;
+  --color-border: #161616;
+  --color-border-hover: #333333;
+  --color-accent: #0f16a5;
+  --color-accent-glow: rgba(15, 22, 165, 0.2);
+  --color-muted: #808080;
+  --color-dark-gray: #050505;
+  --color-card-bg: #0a0a0a;
+  --color-emerald: #10b981;
+  
+  --font-display: 'Montserrat', sans-serif;
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+/* Reset & Core defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom selection styling */
+::selection {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+}
+
+/* Layout Containers */
+.max-width-container {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+@media (min-width: 768px) {
+  .max-width-container {
+    padding: 0 5vw;
+  }
+}
+
+/* Sticky Navbar Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.4); /* Más transparente y ligero */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 30px 1rem 40px !important; /* 40px a la izquierda (logo) y 30px a la derecha (menú) */
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.brand-logo {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--color-fg);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.brand-logo:hover {
+  opacity: 0.8;
+}
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
+.nav-link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-muted);
+  text-decoration: none;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-fg);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--color-fg);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Hide Desk inquiries counter on both desktop and mobile to match mockup */
+.desk-counter-btn {
+  display: none !important;
+}
+
+/* Mobile Nav Toggle Button */
+.mobile-nav-toggle {
+  display: block;
+  background: none;
+  border: none;
+  color: var(--color-fg);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav-toggle:hover {
+  opacity: 0.8;
+}
+
+@media (min-width: 768px) {
+  .mobile-nav-toggle {
+    display: none;
+  }
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Mobile Dropdown Menu */
+.mobile-dropdown {
+  display: none;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: 2rem 1.5rem;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-dropdown.open {
+  display: flex;
+}
+
+.mobile-dropdown .nav-link {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 1.5rem 3rem;
+  overflow: hidden;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(15, 22, 165, 0.16) 0%, #000000 65%);
+}
+
+.hero-glow {
+  display: none;
+}
+
+.hero-negative-space {
+  position: absolute;
+  top: 42%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0.02;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.hero-negative-space span {
+  font-family: var(--font-display);
+  font-size: 16vw;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.1);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 64rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 6.2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--color-fg);
+  text-align: center;
+  width: 100%;
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-subtitle {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: var(--color-muted);
+  max-width: 32rem;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: fadeIn 1s ease 0.3s forwards;
+}
+
+@media (min-width: 768px) {
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+}
+
+.hero-cta-wrapper {
+  margin-top: 3.5rem;
+  opacity: 0;
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 1.25rem 2.5rem;
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border: 1px solid var(--color-fg);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-fg);
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.4;
+}
+
+.hero-scroll-indicator span {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  color: #808080;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--color-fg), transparent);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Sections Global */
+.section {
+  position: relative;
+  padding: 7rem 0;
+  z-index: 10;
+}
+
+.section-border-top {
+  border-top: 1px solid var(--color-border);
+}
+
+.section-border-bottom {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-bg-dark {
+  background-color: #000000;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.5rem;
+}
+
+.section-pretitle {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: var(--color-fg);
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 3.5rem;
+  }
+}
+
+.section-meta {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-muted);
+  padding-bottom: 0.5rem;
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+  perspective: 1200px;
+}
+
+/* Horizontal Scroll Container (Airport Style) */
+.horizontal-scroll-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 2rem;
+  padding-bottom: 2rem; /* space for scrollbar or shadow */
+  perspective: 1200px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  scroll-behavior: auto; /* Allow JS smooth scroll */
+}
+.horizontal-scroll-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.horizontal-scroll-grid .project-card {
+  flex: 0 0 auto;
+  width: 28vw;
+  min-width: 280px;
+  max-width: 400px;
+}
+
+.project-card {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  overflow: hidden;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, opacity 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform, opacity, box-shadow;
+}
+
+#project-grid.has-hovered-sibling .project-card:not(.is-hovered) {
+  opacity: 0.35;
+  filter: grayscale(30%) blur(0.5px);
+}
+
+.project-card.is-hovered {
+  opacity: 1 !important;
+  filter: none !important;
+  z-index: 100;
+  box-shadow: 0px 25px 50px rgba(15, 22, 165, 0.3);
+}
+
+.col-span-8 {
+  grid-column: span 8;
+}
+.col-span-4 {
+  grid-column: span 4;
+}
+
+/* Aspect ratios */
+.project-card .img-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.aspect-wide {
+  aspect-ratio: 16/10;
+}
+
+.aspect-tall {
+  aspect-ratio: 3/4;
+}
+
+.aspect-equal {
+  aspect-ratio: 4/3;
+}
+
+.project-card .overlay {
+  display: none;
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover img {
+  transform: scale(1.03);
+}
+
+/* Card bottom banner */
+.project-banner {
+  position: static;
+  width: 100%;
+  padding: 1rem 0;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.project-banner > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-title {
+  order: 1;
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-transform: none;
+  color: var(--color-fg);
+  letter-spacing: -0.01em;
+}
+
+.project-category {
+  order: 2;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  margin-top: 0.25rem;
+}
+
+.arrow-circle {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-fg);
+  margin-top: 0.15rem;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .arrow-circle {
+  transform: translate(2px, -2px);
+  background: transparent;
+  color: var(--color-fg);
+}
+
+.year-tag {
+  display: none;
+}
+
+/* About Section */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4rem;
+  align-items: center;
+}
+
+.portrait-container {
+  grid-column: span 5;
+  display: flex;
+  justify-content: center;
+}
+
+.portrait-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  border: none;
+  overflow: hidden;
+}
+
+.portrait-wrapper .overlay {
+  display: none;
+}
+
+.portrait-wrapper img,
+.portrait-wrapper video {
+  width: 100%;
+  height: 480px;
+  object-fit: contain;
+  display: block;
+  background-color: #030303;
+}
+
+.portrait-badge {
+  display: none;
+}
+
+.about-text-container {
+  grid-column: span 7;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.about-body-lead {
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-fg);
+}
+
+.about-body-text {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-muted);
+  max-width: 42rem;
+}
+
+.stats-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 3.5rem;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-fg);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-muted);
+  margin-top: 0.25rem;
+}
+
+/* Specialties Section */
+.specialties-intro {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  text-align: left;
+  perspective: 1000px;
+}
+
+.service-card-static {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+.service-card-static:hover {
+  border-color: var(--color-border-hover);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0px 20px 40px rgba(255, 255, 255, 0.05);
+}
+
+.service-card-static .service-icon-box, 
+.service-card-static .service-title-static, 
+.service-card-static .service-description-static {
+  transform: translateZ(25px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-icon-box {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-fg);
+}
+
+.service-title-static {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-fg);
+}
+
+.service-description-static {
+  font-size: 0.8125rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+/* Planner Section */
+.planner-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  padding: 4rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.planner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.planner-info-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.planner-desc {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.contact-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-fg);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+  width: fit-content;
+}
+
+.email-icon-box {
+  color: var(--color-muted);
+}
+
+.social-list {
+  display: flex;
+  gap: 2rem;
+}
+
+.social-link {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.social-link:hover {
+  color: var(--color-fg);
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.3s ease, fill 0.3s ease;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.social-icon-outline {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.social-icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+.social-link:hover .social-icon {
+  transform: scale(1.18) rotate(-5deg);
+}
+
+/* Planner Form Underline styles */
+.planner-form-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-underline {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label-underline {
+  font-family: var(--font-sans);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-muted);
+  text-transform: uppercase;
+}
+
+.form-input-underline {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-fg);
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-input-underline::placeholder {
+  color: #333;
+}
+
+.form-input-underline:focus {
+  border-color: var(--color-fg);
+}
+
+.btn-submit-mockup {
+  width: 100%;
+  padding: 1.25rem;
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+  border: 1px solid var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  margin-top: 1rem;
+}
+
+.btn-submit-mockup:hover {
+  background-color: transparent;
+  color: var(--color-fg);
+}
+
+/* Footer Section */
+.footer {
+  background-color: #000000;
+  border-top: 1px solid var(--color-border);
+  padding: 3.5rem 0;
+}
+
+.footer-watermark {
+  display: none;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--color-fg);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.footer-socials a {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: var(--color-fg);
+}
+
+.footer-copy {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+}
+
+/* Drawer Panels styling */
+.drawer-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.drawer-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #030303;
+  border-left: 1px solid var(--color-border);
+  z-index: 2100;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-panel.active {
+  transform: translateX(0);
+}
+
+.drawer-panel-project {
+  overflow: hidden !important;
+}
+
+@media (min-width: 768px) {
+  .drawer-panel-project {
+    max-width: 100%;
+    width: 100%;
+  }
+  .drawer-panel-tracker {
+    max-width: 28rem;
+  }
+}
+
+.drawer-image-fullscreen-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  overflow: hidden;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+.drawer-image-fullscreen {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2100;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.carousel-nav-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.carousel-nav-prev {
+  left: 2rem;
+}
+
+.carousel-nav-next {
+  right: 2rem;
+}
+
+.carousel-counter {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  z-index: 2100;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  user-select: none;
+}
+
+.project-drawer-close-floating {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 2200;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--color-border);
+  color: var(--color-fg);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.project-drawer-close-floating:hover {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+  border-color: var(--color-fg);
+  transform: scale(1.05);
+}
+
+.drawer-header {
+  position: sticky;
+  top: 0;
+  background-color: rgba(3, 3, 3, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.5rem;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drawer-close-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.drawer-close-btn:hover {
+  color: var(--color-fg);
+}
+
+/* Mobile View Redesign Overrides */
+@media (max-width: 767px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+  
+  .section-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+  
+  /* Navbar */
+
+
+  .brand-logo {
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    padding-top: 8rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: radial-gradient(circle at 30% 30%, rgba(15, 22, 165, 0.15) 0%, #000000 70%);
+  }
+
+  .hero-content {
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2.85rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+  }
+
+  .hero-subtitle {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    max-width: 100%;
+    line-height: 1.5;
+  }
+
+  .hero-cta-wrapper {
+    margin-top: 3rem;
+    width: 100%;
+  }
+
+  .btn-primary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    border-radius: 0;
+  }
+
+  .btn-primary::after {
+    content: "→";
+    font-size: 1.1rem;
+    font-weight: normal;
+  }
+
+  .hero-scroll-indicator {
+    display: none;
+  }
+
+  /* Selected Works */
+  .bento-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .project-card {
+    border: none;
+    background: transparent;
+    margin-bottom: 6rem;
+  }
+
+  .project-card:last-child {
+    margin-bottom: 2rem;
+  }
+
+  .project-card .img-wrapper {
+    overflow: visible;
+    aspect-ratio: 16/11;
+  }
+
+  .project-card .img-wrapper img {
+    border-radius: 2px;
+  }
+
+  .project-banner {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 0.85rem 0 0 0;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .project-banner > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card-title {
+    order: 1;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+
+  .project-category {
+    order: 2;
+    margin-top: 0.25rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+  }
+
+  .arrow-circle {
+    border: none;
+    background: transparent;
+    width: auto;
+    height: auto;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.15rem;
+  }
+
+  .arrow-circle svg {
+    width: 18px;
+    height: 18px;
+    color: var(--color-fg);
+  }
+
+  /* About Me Section */
+  .about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-text-container {
+    display: contents;
+  }
+
+  .about-title-block {
+    order: 1;
+  }
+
+  .portrait-container {
+    order: 2;
+    width: 100%;
+  }
+
+  .portrait-wrapper {
+    max-width: 100%;
+    border: none;
+  }
+
+  .portrait-wrapper img {
+    height: 380px;
+  }
+
+  .about-manifesto-block {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .about-body-lead {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .about-body-text {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  .stats-grid {
+    margin-top: 1rem;
+    gap: 1.5rem;
+  }
+
+  /* Specialties */
+  .services-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .service-card-static {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.25rem 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .service-card-static:last-child {
+    border-bottom: none;
+  }
+
+  .service-icon-box {
+    border: none;
+    background: transparent;
+    width: auto;
+    height: auto;
+    padding: 0;
+    color: var(--color-muted);
+  }
+
+  .service-title-static {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: lowercase;
+    letter-spacing: normal;
+  }
+
+  .service-description-static {
+    display: none !important;
+  }
+
+  /* Planner Form */
+  .planner-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+
+  .planner-info {
+    padding: 0;
+  }
+
+  .planner-form-col {
+    padding: 0;
+  }
+
+  .form-input-underline {
+    border-bottom: 1px solid #333;
+    font-size: 0.95rem;
+    padding: 0.75rem 0;
+  }
+
+  .form-label-underline {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+
+  .btn-submit-mockup {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 1.25rem;
+    border-radius: 0;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 3.5rem 0;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .footer-logo {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    text-align: center;
+    width: 100%;
+  }
+
+  .footer-socials {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-socials a {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+
+  .footer-copy {
+    text-align: center;
+    font-size: 0.65rem;
+    width: 100%;
+  }
+}
+
+/* Figma Blueprint Guidelines Scroll Construction Effect */
+.figma-guides {
+  position: absolute;
+  top: -15px;
+  left: -20px;
+  right: -20px;
+  bottom: 0px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.figma-bounds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px dashed #0c8ce9;
+  opacity: calc(var(--scroll-factor, 0) * 1.5);
+  transform: scale(calc(1 + var(--scroll-factor, 0) * 0.1));
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+}
+
+.figma-node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+  border: 1.5px solid #0c8ce9;
+  z-index: 10;
+}
+
+.top-left { top: -3px; left: -3px; }
+.top-right { top: -3px; right: -3px; }
+.bottom-left { bottom: -3px; left: -3px; }
+.bottom-right { bottom: -3px; right: -3px; }
+
+.figma-label {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background-color: #0c8ce9;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.2rem 0.4rem;
+  border-radius: 2px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+
+.figma-dims {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0c8ce9;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.2rem 0.4rem;
+  border-radius: 2px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.figma-baseline-guide {
+  position: absolute;
+  left: -50vw;
+  width: 200vw;
+  height: 1px;
+  border-bottom: 1px dotted rgba(12, 140, 233, 0.35);
+  opacity: calc(var(--scroll-factor, 0) * 1.2);
+  transition: opacity 0.15s ease-out;
+}
+
+.figma-baseline-guide.line-1 {
+  top: 25%;
+}
+
+.figma-baseline-guide.line-2 {
+  top: 75%;
+}
+
+.figma-axis-y {
+  position: absolute;
+  top: -100vh;
+  left: 50%;
+  width: 1px;
+  height: 300vh;
+  border-left: 1px dashed rgba(12, 140, 233, 0.2);
+  opacity: calc(var(--scroll-factor, 0) * 1.2);
+  transition: opacity 0.15s ease-out;
+}
+
+.hero-word-g {
+  display: block;
+  letter-spacing: calc(-0.04em + var(--scroll-factor, 0) * 0.16em);
+  transition: letter-spacing 0.15s ease-out;
+}
+
+.hero-word-a {
+  display: block;
+  letter-spacing: calc(-0.04em + var(--scroll-factor, 0) * 0.16em);
+  transition: letter-spacing 0.15s ease-out;
+}
+
+:root {
+  --scroll-factor: 0;
+}
+
+
+/* Page-Wide Figma Blueprint Guides & Spacing CSS */
+.figma-card-guides {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.figma-card-bounds {
+  position: absolute;
+  top: calc(0px - (1 - var(--card-scroll, 0)) * 25px);
+  left: calc(0px - (1 - var(--card-scroll, 0)) * 25px);
+  right: calc(0px - (1 - var(--card-scroll, 0)) * 25px);
+  bottom: calc(0px - (1 - var(--card-scroll, 0)) * 25px);
+  border: 1px dashed rgba(12, 140, 233, calc(1.5 - var(--card-scroll, 0) * 1.5));
+  opacity: calc(1.5 - var(--card-scroll, 0) * 1.5);
+  transition: opacity 0.15s ease-out, top 0.15s ease-out, left 0.15s ease-out, right 0.15s ease-out, bottom 0.15s ease-out;
+}
+
+.figma-card-label {
+  position: absolute;
+  top: -18px;
+  left: 0;
+  background-color: #0c8ce9;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 0.15rem 0.35rem;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.figma-card-dims {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0c8ce9;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 0.15rem 0.35rem;
+  border-radius: 2px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.figma-crop-guides {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.figma-crop-bounds {
+  position: absolute;
+  top: calc(0px - (1 - var(--scroll-factor, 0)) * 25px);
+  left: calc(0px - (1 - var(--scroll-factor, 0)) * 25px);
+  right: calc(0px - (1 - var(--scroll-factor, 0)) * 25px);
+  bottom: calc(0px - (1 - var(--scroll-factor, 0)) * 25px);
+  border: 1.5px solid rgba(12, 140, 233, calc(var(--scroll-factor, 0) * 1.5));
+  opacity: calc(var(--scroll-factor, 0) * 1.5);
+  transition: opacity 0.15s ease-out, top 0.15s ease-out, left 0.15s ease-out, right 0.15s ease-out, bottom 0.15s ease-out;
+}
+
+.figma-crop-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #0c8ce9;
+  z-index: 20;
+}
+.figma-crop-corner.top-left { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.figma-crop-corner.top-right { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.figma-crop-corner.bottom-left { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.figma-crop-corner.bottom-right { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+.figma-crop-label {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background-color: #0c8ce9;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 0.2rem 0.4rem;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.figma-crop-dims {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0c8ce9;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 0.2rem 0.4rem;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.figma-service-guides {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  width: 100%;
+  height: 1.5rem;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: calc(var(--scroll-factor, 0) * 1.5);
+  transition: opacity 0.15s ease-out;
+}
+
+.figma-gap-indicator {
+  background-color: rgba(242, 100, 25, 0.12);
+  border-top: 1px dashed #f26419;
+  border-bottom: 1px dashed #f26419;
+  color: #f26419;
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+  padding: 0.1rem 0;
+}
+
+.figma-form-guides {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.figma-form-bounds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px dashed rgba(12, 140, 233, calc(var(--scroll-factor, 0) * 1.5));
+  opacity: calc(var(--scroll-factor, 0) * 1.5);
+  transform: scale(calc(0.98 + var(--scroll-factor, 0) * 0.02));
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+}
+
+.figma-form-label {
+  position: absolute;
+  top: -18px;
+  left: 0;
+  background-color: #0c8ce9;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 0.15rem 0.35rem;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.figma-form-dims {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0c8ce9;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 0.15rem 0.35rem;
+  border-radius: 2px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+
+/* Gold Hover Micro-interaction */
+.project-card img {
+  border-radius: 2px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card.is-hovered img {
+  border-radius: 8px;
+}
+
+/* Light up gold figma guidelines on hover */
+.project-card.is-hovered .figma-card-bounds {
+  border-color: #c3a05d !important;
+  border-style: solid !important;
+  opacity: 0.85 !important;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+}
+
+.project-card.is-hovered .figma-node {
+  border-color: #c3a05d !important;
+}
+
+.project-card.is-hovered .figma-card-label {
+  background-color: #c3a05d !important;
+}
+
+.project-card.is-hovered .figma-card-dims {
+  background-color: #c3a05d !important;
+}
+
+/* --- Estilos de Revelado Dinámico Progresivo al Scroll (Google Style) --- */
+#work .section-header {
+  --header-reveal: clamp(0, var(--scroll-factor, 0) * 3, 1);
+  opacity: var(--header-reveal);
+  transform: translateY(calc((1 - var(--header-reveal)) * 30px));
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+
+#work .project-card {
+  --card-reveal: clamp(0, (var(--scroll-factor, 0) - 0.08) * 2.2, 1);
+  opacity: var(--card-reveal);
+  transform: translateY(calc((1 - var(--card-reveal)) * 50px)) scale(calc(0.96 + var(--card-reveal) * 0.04));
+  filter: blur(calc((1 - var(--card-reveal)) * 6px));
+  transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease-out, box-shadow 0.4s ease;
+  will-change: transform, opacity, filter;
+}
+
+
+/* --- Estilos de Fondo Glassmorphic para "Sobre mí" --- */
+#about {
+  background: #000000 !important;
+  position: relative;
+  overflow: hidden;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+#about .card-layer-wrapper {
+  background: linear-gradient(180deg, #000000 0%, rgba(15, 22, 165, 0.45) 50%, #000000 100%) !important;
+}
+
+#about .card-layer-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(15, 22, 165, 0.5) 0%, transparent 70%) !important;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#about .card-layer-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(25px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(130%) !important;
+  background: linear-gradient(180deg, transparent 0%, rgba(15, 22, 165, 0.15) 50%, transparent 100%) !important;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#about .max-width-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Botón "Ver" interactivo en las tarjetas de especialidad --- */
+.service-card-static {
+  position: relative; /* Para poder posicionar de forma absoluta el botón Ver */
+}
+
+.service-ver-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-muted);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  pointer-events: none; /* Los clics atraviesan el botón para activar la tarjeta */
+  transform: translateZ(25px);
+  will-change: transform, background, color, border-color, box-shadow;
+}
+
+.service-card-static:hover .service-ver-btn {
+  color: #ffffff;
+  border-color: var(--color-accent, #0f16a5);
+  background: var(--color-accent, #0f16a5);
+  box-shadow: 0 4px 12px rgba(15, 22, 165, 0.3);
+  transform: translateZ(35px) scale(1.05);
+}
+
+/* --- Barra de Filtros de Categoría (PROYECTOS SELECCIONADOS) --- */
+.filter-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.5rem;
+}
+
+.filter-tab {
+  font-family: var(--font-sans);
+  font-size: 0.725rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.45rem 1.15rem;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, background-color, color, border-color;
+}
+
+.filter-tab:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.filter-tab.active {
+  color: #ffffff;
+  background-color: var(--color-accent, #0f16a5);
+  border-color: var(--color-accent, #0f16a5);
+  box-shadow: 0 4px 15px rgba(15, 22, 165, 0.45);
+}
+
+/* --- Estilos para Secciones Fluidas y Responsivas (Desktop) --- */
+@media (min-width: 1024px) {
+  html {
+    scroll-snap-type: none; /* Desactivamos el snapping que causaba saltos o bloqueos */
+    scroll-behavior: smooth;
+  }
+  
+  /* Secciones con fondo extendido y altura mínima fluida */
+  .hero, 
+  .section {
+    position: relative;
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+    overflow: visible;
+    padding: 6rem 0 !important; /* Espaciado fluido arriba/abajo */
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Capa contenedora de contenido fluida */
+  .card-layer-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh - 120px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    transform: none !important; /* Desactivamos transformaciones de escala que causaban recortes */
+    filter: none !important;
+  }
+  
+  /* Elevamos el indicador de scroll para reducir el espacio inferior percibido */
+  .hero .hero-scroll-indicator {
+    bottom: 5.5rem;
+  }
+  
+  /* Eliminar márgenes superiores negativos fijos que empujaban el contenido */
+  #work .max-width-container,
+  #about .max-width-container,
+  #services .max-width-container,
+  #contact .max-width-container {
+    margin-top: 0 !important;
+  }
+}
+
+/* --- Estilos de Revelado de Contenido (Content Reveal) --- */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Activación al fijar la tarjeta */
+.active-card .reveal-element {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* WhatsApp Floating Badge */
+.whatsapp-float {
+  position: fixed;
+  bottom: 5.5rem; /* Subimos el botón 50px más arriba para que no estorbe el footer */
+  right: 2rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: scale(0) translateY(20px);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+}
+
+.whatsapp-float svg {
+  width: 32px;
+  height: 32px;
+  fill: #ffffff;
+}
+
+/* Red Notification Bubble */
+.whatsapp-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: #ff2d55; /* Color rojo vibrante idéntico al de iOS/mockup */
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid #ffffff;
+}
+
+/* Display floating WhatsApp badge only when contact section is active */
+.active-card#contact ~ .whatsapp-float,
+body:has(#contact.active-card) .whatsapp-float {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+
+/* Retrasos escalonados (stagger) para un efecto dinámico fluido */
+.reveal-element.delay-1 { transition-delay: 0.15s; }
+.reveal-element.delay-2 { transition-delay: 0.3s; }
+.reveal-element.delay-3 { transition-delay: 0.45s; }
+.reveal-element.delay-4 { transition-delay: 0.6s; }
+
+/* --- Catálogo de Identidades Visuales --- */
+.brand-catalog-container {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding-bottom: 8rem; /* Espacio extra seguro abajo */
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: none;
+  animation: catalogReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes catalogReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 1024px) {
+  .brand-catalog-container {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+@media (max-width: 1023px) {
+  .brand-catalog-container {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+/* Scrollbar personalizada */
+.brand-catalog-container::-webkit-scrollbar {
+  width: 6px;
+}
+.brand-catalog-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 4px;
+}
+.brand-catalog-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.brand-catalog-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 22, 165, 0.4);
+}
+
+.brand-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.brand-catalog-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-catalog-card.locked {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.brand-catalog-card:not(.locked):hover {
+  transform: translateY(-8px);
+  border-color: rgba(15, 22, 165, 0.4);
+  box-shadow: 0px 15px 30px rgba(15, 22, 165, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.brand-catalog-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d0d;
+}
+
+.brand-catalog-card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-catalog-card:not(.locked):hover .brand-catalog-card-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.brand-catalog-card-lock-icon {
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.brand-catalog-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.brand-catalog-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.brand-catalog-card-tag {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(15, 22, 165, 0.2);
+  color: #7b88ff;
+  border: 1px solid rgba(15, 22, 165, 0.3);
+}
+
+.brand-catalog-card.locked .brand-catalog-card-tag {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.brand-catalog-card-year {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.brand-catalog-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.brand-catalog-card-desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.brand-catalog-card-footer {
+  margin-top: auto;
+  font-size: 0.75rem;
+  color: #7b88ff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.brand-catalog-card.locked .brand-catalog-card-footer {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Vista de Detalles */
+.brand-detail-view {
+  width: 100%;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.brand-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 1rem;
+}
+
+.back-to-catalog-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.back-to-catalog-btn:hover {
+  background: rgba(15, 22, 165, 0.15);
+  border-color: rgba(15, 22, 165, 0.4);
+  color: #7b88ff;
+}
+
+.brand-detail-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.brand-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* --- Flipbook 3D para Manuales de Marca --- */
+.flipbook-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1.5rem 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.flipbook-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 2rem;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.flipbook {
+  position: relative;
+  width: 98%;
+  max-width: 1280px;
+  aspect-ratio: 8 / 3; /* Proporción nativa para libro de doble página abierta horizontal de 4:3 */
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  user-select: none;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+}
+
+
+
+/* Animaciones de volteo estilo Apple Books (con elevación en Z y torsión en Z) */
+@keyframes appleBooksFlipLeft {
+  0% {
+    transform: rotateY(0deg) rotateZ(0deg) translateZ(0px);
+  }
+  35% {
+    transform: rotateY(-65deg) rotateZ(-3deg) translateZ(60px); /* Se dobla hacia el lector */
+  }
+  70% {
+    transform: rotateY(-125deg) rotateZ(-3deg) translateZ(60px);
+  }
+  100% {
+    transform: rotateY(-180deg) rotateZ(0deg) translateZ(0px);
+  }
+}
+
+@keyframes appleBooksFlipRight {
+  0% {
+    transform: rotateY(-180deg) rotateZ(0deg) translateZ(0px);
+  }
+  35% {
+    transform: rotateY(-115deg) rotateZ(3deg) translateZ(60px);
+  }
+  70% {
+    transform: rotateY(-55deg) rotateZ(3deg) translateZ(60px);
+  }
+  100% {
+    transform: rotateY(0deg) rotateZ(0deg) translateZ(0px);
+  }
+}
+
+/* Hojas del Libro */
+.flip-sheet {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  z-index: 1;
+  transform: rotateY(0deg);
+}
+
+.flip-sheet.turning-left {
+  animation: appleBooksFlipLeft 1.1s cubic-bezier(0.2, 0.85, 0.3, 1) forwards;
+}
+
+.flip-sheet.turning-right {
+  animation: appleBooksFlipRight 1.1s cubic-bezier(0.2, 0.85, 0.3, 1) forwards;
+}
+
+/* Páginas Frontales y Traseras */
+.page-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 0 6px 6px 0;
+  overflow: hidden;
+  border: none;
+  background-color: transparent;
+}
+
+.page-side.back {
+  transform: rotateY(180deg);
+  border-radius: 6px 0 0 6px;
+}
+
+.page-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Quita los bordes negros llenando el contenedor */
+  background-color: transparent;
+}
+
+/* Capa de Sombreado de Barrido 3D */
+.page-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0;
+}
+
+@keyframes shadeFadeEffect {
+  0% { opacity: 0; }
+  50% { opacity: 0.35; }
+  100% { opacity: 0; }
+}
+
+.flip-sheet.turning-left .page-side:not(.back) .page-shade {
+  animation: shadeFadeEffect 1.1s ease forwards;
+}
+
+.flip-sheet.turning-right .page-side.back .page-shade {
+  animation: shadeFadeEffect 1.1s ease forwards;
+}
+
+
+
+/* Botones de control flotantes */
+.flipbook-arrow {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.flipbook-arrow:hover:not(:disabled) {
+  background: rgba(15, 22, 165, 0.25);
+  border-color: rgba(15, 22, 165, 0.5);
+  color: #7b88ff;
+  transform: scale(1.08);
+}
+
+.flipbook-arrow:disabled {
+  opacity: 0.15;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.flipbook-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.flipbook-page-indicator {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Adaptación Móvil: Vista de página simple en 3D */
+@media (max-width: 767px) {
+  .flipbook-view {
+    gap: 0.75rem;
+  }
+  .flipbook-arrow {
+    width: 38px;
+    height: 38px;
+  }
+  .flipbook {
+    width: 95%;
+    aspect-ratio: 4 / 3; /* Página única horizontal nativa 4:3 en móvil */
+    max-width: 500px;
+  }
+  .flipbook::after {
+    display: none;
+  }
+  .flip-sheet {
+    left: 0;
+    width: 100%;
+    transform-origin: center;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
+  }
+  .flip-sheet.flipped {
+    transform: translateX(-100%) rotateY(-90deg) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .page-side {
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  .page-side.back {
+    display: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+</style>
+  </head>
+  <body>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+      <div class="max-width-container navbar-container">
+        <a href="#" class="brand-logo">GABRIELA ALCÁNTARA</a>
+        
+        <!-- Desktop Links -->
+        <div class="nav-links">
+          <a href="#work" class="nav-link">Proyectos</a>
+          <a href="#about" class="nav-link">Sobre mí</a>
+          <a href="#services" class="nav-link">Servicios</a>
+          <a href="#contact" class="nav-link">Contacto</a>
+          
+          <button class="desk-counter-btn" id="desk-counter-btn">
+            <span class="pulse-indicator"></span>
+            Desk (<span class="desk-count">0</span>)
+          </button>
+        </div>
+
+        <!-- Mobile Right Nav Controls -->
+        <div class="navbar-right">
+          <button class="desk-counter-btn" id="desk-counter-btn-mobile">
+            <span class="pulse-indicator"></span>
+            Desk (<span class="desk-count">0</span>)
+          </button>
+          
+          <button class="mobile-nav-toggle" id="mobile-menu-open" aria-label="Toggle Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div class="mobile-dropdown" id="mobile-dropdown">
+        <a href="#work" class="nav-link">Proyectos</a>
+        <a href="#about" class="nav-link">Sobre mí</a>
+        <a href="#services" class="nav-link">Servicios</a>
+        <a href="#contact" class="nav-link">Contacto</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="card-layer-wrapper">
+        <div class="hero-glow"></div>
+        <div class="hero-negative-space">
+          <span>VISIÓN CREATIVA ESTRATEGIA IDENTIDAD</span>
+        </div>
+        <div class="hero-content" style="position: relative;">
+          <!-- Figma Blueprint Guidelines Overlay -->
+          <div class="figma-guides">
+            <div class="figma-bounds">
+              <div class="figma-node top-left"></div>
+              <div class="figma-node top-right"></div>
+              <div class="figma-node bottom-left"></div>
+              <div class="figma-node bottom-right"></div>
+              <div class="figma-label">H1 #hero-title</div>
+              <div class="figma-dims">W: <span class="figma-val-w">980px</span> H: <span class="figma-val-h">240px</span></div>
+            </div>
+            <!-- Baseline guidelines -->
+            <div class="figma-baseline-guide line-1"></div>
+            <div class="figma-baseline-guide line-2"></div>
+            <!-- Vertical alignment axis -->
+            <div class="figma-axis-y"></div>
+          </div>
+   
+          <h1 class="hero-title">
+            <span class="hero-word-g">GABRIELA</span>
+            <span class="hero-word-a">ALCÁNTARA</span>
+          </h1>
+          <p class="hero-subtitle">Diseñando Experiencias Visuales Impactantes.</p>
+          <div class="hero-cta-wrapper">
+            <a href="#work" class="btn-primary">EXPLORAR MI TRABAJO</a>
+          </div>
+        </div>
+        <div class="hero-scroll-indicator">
+          <span>Deslizar</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Selected Work Section -->
+    <section id="work" class="section section-border-top">
+      <div class="card-layer-wrapper">
+        <div class="max-width-container">
+          <div class="section-header reveal-element">
+            <div>
+              <span class="section-pretitle">PORTAFOLIO</span>
+              <h2 class="section-title">Proyectos Seleccionados</h2>
+            </div>
+            <div class="section-meta">[2021—2026]</div>
+          </div>
+
+          <!-- Barra de Filtros de Categoría -->
+          <div class="filter-bar reveal-element delay-1">
+            <button class="filter-tab active" data-category="all">Todos</button>
+            <button class="filter-tab" data-category="redes">Redes Sociales</button>
+            <button class="filter-tab" data-category="posters">Posters & Publicidad</button>
+            <button class="filter-tab" data-category="marca">Identidad de Marca</button>
+            <button class="filter-tab" data-category="ilustracion">Ilustración</button>
+            <button class="filter-tab" data-category="web">Diseño Web</button>
+          </div>
+          
+          <!-- Sub-filtros para Identidad de Marca (Aparece dinámicamente) -->
+          <div class="filter-bar brand-sub-filters reveal-element" id="brand-sub-filters" style="display: none; margin-top: 1rem; padding: 0.5rem; justify-content: center; gap: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: none; width: 100%;">
+            <button class="filter-tab" data-brand="alcantara" style="font-size: 0.7rem; padding: 0.35rem 0.95rem;">Alcántara Innova</button>
+            <button class="filter-tab" data-brand="future1" style="font-size: 0.7rem; padding: 0.35rem 0.95rem; opacity: 0.5; cursor: not-allowed;" disabled>Próxima Identidad A</button>
+            <button class="filter-tab" data-brand="future2" style="font-size: 0.7rem; padding: 0.35rem 0.95rem; opacity: 0.5; cursor: not-allowed;" disabled>Próxima Identidad B</button>
+          </div>
+   
+          <!-- Bento Grid container -->
+          <div class="horizontal-scroll-grid reveal-element delay-2" id="project-grid"></div>
+
+          <!-- Catálogo de Identidades Visuales -->
+          <div id="brand-identities-catalog" class="brand-catalog-container reveal-element delay-2" style="display: none;">
+            <div class="brand-list-grid" id="brand-list-grid"></div>
+            <div class="brand-detail-view" id="brand-detail-view" style="display: none;">
+              <div class="brand-detail-header">
+                <button class="back-to-catalog-btn" id="back-to-catalog-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                  Regresar al Catálogo
+                </button>
+                <h3 class="brand-detail-title" id="brand-detail-title">Alcántara Innova</h3>
+              </div>
+              <!-- Componente Flipbook Interactivo (Libro Digital / Revista) -->
+              <div class="flipbook-container">
+                <div class="flipbook-view">
+                  <button class="flipbook-arrow prev" id="fb-prev-btn" aria-label="Página anterior">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                  </button>
+                  
+                  <div class="flipbook" id="manual-flipbook"></div>
+                  
+                  <button class="flipbook-arrow next" id="fb-next-btn" aria-label="Siguiente página">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </button>
+                </div>
+                
+                <div class="flipbook-controls">
+                  <span class="flipbook-page-indicator" id="fb-indicator">Página 1 de 24</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- About Section -->
+    <section id="about" class="section section-border-top section-border-bottom section-bg-dark">
+      <div class="card-layer-wrapper">
+        <div class="max-width-container about-grid">
+          <!-- Portrait -->
+          <div class="portrait-container reveal-element">
+            <div class="portrait-wrapper" style="position: relative;">
+              <!-- Figma Crop Guides -->
+              <div class="figma-crop-guides">
+                <div class="figma-crop-bounds">
+                  <span class="figma-crop-label">Máscara "Retrato"</span>
+                  <span class="figma-crop-dims">W: 420px H: 480px</span>
+                  <div class="figma-crop-corner top-left"></div>
+                  <div class="figma-crop-corner top-right"></div>
+                  <div class="figma-crop-corner bottom-left"></div>
+                  <div class="figma-crop-corner bottom-right"></div>
+                </div>
+              </div>
+              <div class="overlay"></div>
+              <video autoplay loop muted playsinline style="width: 100%; height: 480px; object-fit: cover; display: block;">
+                <source src="./video/profile_video.mp4" type="video/mp4">
+                <source src="./video/Character_drinks_water,_winks_202606081853.webm" type="video/webm">
+                Tu navegador no soporta este video.
+              </video>
+              <div class="portrait-badge">Directora Artística</div>
+            </div>
+          </div>
+          
+          <!-- Bio and Manifesto -->
+          <div class="about-text-container reveal-element delay-1">
+            <div class="about-title-block">
+              <span class="section-pretitle">SOBRE MÍ</span>
+              <h2 class="section-title">Diseñando Historias</h2>
+            </div>
+            
+            <div class="about-manifesto-block">
+              <p class="about-body-lead">
+                Soy Gabriela Alcántara, una diseñadora gráfica que trabaja en la hermosa intersección del arte y la estrategia de marketing. Con más de 8 años de experiencia internacional, me especializo en crear lenguajes visuales que dicen más que las palabras convencionales. Mi enfoque creativo se basa en el minimalismo editorial limpio, encontrando el equilibrio ideal entre la funcionalidad prístina y la belleza de un diseño vanguardista.
+              </p>
+              
+              <p class="about-body-text">
+                Colaboro con marcas disruptivas y de lujo progresistas que no temen desafiar los límites tradicionales. Ayudo a los fundadores a materializar ideas complejas en activos estéticos tangibles, desde biomateriales táctiles y empaques sin tinta hasta productos digitales reactivos.
+              </p>
+   
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <div class="stat-number">50+</div>
+                  <div class="stat-label">PROYECTOS</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">12</div>
+                  <div class="stat-label">PREMIOS</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Specialties Section -->
+    <section id="services" class="section">
+      <div class="card-layer-wrapper">
+        <div class="max-width-container">
+          <div class="specialties-intro reveal-element">
+            <span class="section-pretitle">ESPECIALIDADES</span>
+            <h2 class="section-title">Servicios</h2>
+          </div>
+  
+          <!-- Static Specialties Grid -->
+          <div class="services-grid">
+            <!-- Card 1: Brand Identity -->
+            <div class="service-card-static reveal-element delay-1" id="service-brand" style="cursor: pointer;">
+              <span class="service-ver-btn">Ver</span>
+              <div class="service-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+              </div>
+              <h3 class="service-title-static">IDENTIDAD DE MARCA</h3>
+              <p class="service-description-static">Desarrollo de sistemas visuales cohesivos que definen la presencia en el mercado and el valor de marca a largo plazo.</p>
+            </div>
+  
+            <!-- Card 2: Packaging -->
+            <div class="service-card-static reveal-element delay-2" id="service-packaging" style="cursor: pointer;">
+              <span class="service-ver-btn">Ver</span>
+              <div class="service-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </div>
+              <h3 class="service-title-static">EMPAQUE Y EMBALAJE</h3>
+              <p class="service-description-static">Experiencias táctiles que fusionan la sostenibilidad con la estética de lujo para el comercio minorista de alta gama.</p>
+            </div>
+  
+            <!-- Card 3: Web & Digital -->
+            <div class="service-card-static reveal-element delay-3" id="service-web" style="cursor: pointer;">
+              <span class="service-ver-btn">Ver</span>
+              <div class="service-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              </div>
+              <h3 class="service-title-static">WEB Y DIGITAL</h3>
+              <p class="service-description-static">Interfaces digitales adaptables y centradas en la tipografía, enfocadas en una experiencia de usuario perfecta.</p>
+            </div>
+  
+            <!-- Card 4: Illustration -->
+            <div class="service-card-static reveal-element delay-4" id="service-illustration" style="cursor: pointer;">
+              <span class="service-ver-btn">Ver</span>
+              <div class="service-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+              </div>
+              <h3 class="service-title-static">ILUSTRACIÓN</h3>
+              <p class="service-description-static">Ilustraciones digitales personalizadas que narran historias conceptuales para proyectos comerciales.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planner Section -->
+    <section id="contact" class="section">
+      <div class="card-layer-wrapper contact-card-wrapper" style="justify-content: space-between;">
+        <div class="max-width-container" style="flex: 1; display: flex; align-items: center; width: 100%;">
+          <div class="planner-card" style="width: 100%;">
+            <!-- Text and info col -->
+            <div class="planner-info reveal-element">
+              <div class="planner-info-title">
+                <span class="section-pretitle">PLANIFICADOR DE PROYECTOS</span>
+                <h2 class="section-title">Construyamos algo significativo</h2>
+              </div>
+              
+              <p class="planner-desc">
+                Actualmente aceptando nuevos proyectos y colaboraciones para 2026.
+              </p>
+  
+              <div class="contact-channels">
+                <a href="mailto:alcantaraga@hotmail.com" class="email-link">
+                  <div class="email-icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                  </div>
+                  alcantaraga@hotmail.com
+                </a>
+  
+                <div class="social-list">
+                  <a href="https://www.behance.net/ALCANTARA1L" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <svg class="social-icon social-icon-fill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M22 14.355c0-.623-.111-1.18-.333-1.671a3.02 3.02 0 0 0-.923-1.196c-.394-.316-.867-.557-1.42-.722-.553-.165-1.16-.247-1.821-.247-.698 0-1.328.093-1.891.278-.563.185-1.042.457-1.439.816a3.61 3.61 0 0 0-.964 1.28c-.24.5-.36 1.077-.36 1.733 0 .666.115 1.25.344 1.753.229.503.542.923.94 1.259.397.337.868.587 1.411.752.544.165 1.12.247 1.727.247.96 0 1.776-.178 2.45-.533.673-.356 1.155-.887 1.444-1.595h-2.1c-.173.29-.445.518-.816.683-.371.165-.802.247-1.294.247-.41 0-.776-.062-1.097-.186a1.986 1.986 0 0 1-.789-.526 1.71 1.71 0 0 1-.469-.805 3.32 3.32 0 0 1-.165-1.021h6.732c.007-.069.011-.144.011-.225zm-2.189-.86h-4.387c.041-.393.155-.717.341-.97a1.6 1.6 0 0 1 .63-.578c.254-.127.563-.191.927-.191.336 0 .633.061.892.183s.475.293.649.513c.174.22.298.564.372 1.034s.005.009-.024.009zM16.5 8h4.992V9.2H16.5V8zM8.596 17H2.5V7h5.928c.677 0 1.276.079 1.796.237a2.82 2.82 0 0 1 1.3.778 2.37 2.37 0 0 1 .531 1.636c0 .546-.118 1.01-.354 1.393a2.38 2.38 0 0 1-1.018.892c.54.185.945.474 1.216.866.27.392.406.883.406 1.472 0 .591-.122 1.107-.366 1.548a2.91 2.91 0 0 1-1.007 1.042c-.427.264-.919.452-1.474.562C9.255 16.944 8.784 17 8.596 17zm-3.6-5.83h2.383c.319 0 .6-.039.84-.119a1.08 1.08 0 0 0 .552-.4c.12-.173.18-.387.18-.64 0-.324-.09-.571-.271-.743s-.48-.258-.897-.258H4.996v2.16zm0 3.73h2.51c.365 0 .685-.045.959-.134.275-.09.492-.236.65-.438a1.08 1.08 0 0 0 .237-.738c0-.319-.092-.572-.275-.758-.184-.186-.484-.278-.9-.278H4.996V14.9z"/>
+                    </svg>
+                    BEHANCE
+                  </a>
+                  <a href="https://www.linkedin.com/in/gabriela-alcántara-61393b328/" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <svg class="social-icon social-icon-outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    LINKEDIN
+                  </a>
+                  <a href="https://www.instagram.com/alcantara1l/?hl=es" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <svg class="social-icon social-icon-outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    INSTAGRAM
+                  </a>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Planner Form column -->
+            <div class="planner-form-col reveal-element delay-1" style="position: relative;">
+              <div class="figma-form-guides">
+                <div class="figma-form-bounds">
+                  <span class="figma-form-label">Form #planner-intake</span>
+                  <span class="figma-form-dims">W: 560px H: 380px</span>
+                  <div class="figma-node top-left"></div>
+                  <div class="figma-node top-right"></div>
+                  <div class="figma-node bottom-left"></div>
+                  <div class="figma-node bottom-right"></div>
+                </div>
+              </div>
+              <!-- Normal form container -->
+              <div id="planner-form-container">
+                <form id="planner-form">
+                  <div class="form-group-underline">
+                    <label for="form-fullname" class="form-label-underline">NOMBRE COMPLETO</label>
+                    <input type="text" id="form-fullname" required class="form-input-underline" placeholder="Alejandro Vane" />
+                  </div>
+                  <div class="form-group-underline">
+                    <label for="form-email" class="form-label-underline">CORREO ELECTRÓNICO</label>
+                    <input type="email" id="form-email" required class="form-input-underline" placeholder="hola@aperture.com" />
+                  </div>
+                  <div class="form-group-underline">
+                    <label for="form-message" class="form-label-underline">DESCRIPCIÓN BREVE</label>
+                    <input type="text" id="form-message" required class="form-input-underline" placeholder="Cuéntanos sobre los objetivos del proyecto..." />
+                  </div>
+  
+                  <button type="submit" class="btn-submit-mockup">ENVIAR CONSULTA</button>
+                </form>
+              </div>
+  
+              <!-- Form Success States container (hidden by default) -->
+              <div id="form-success-container" class="form-success-container" style="display: none;">
+                <div class="success-icon-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <div>
+                  <h3 class="success-title">Consulta Enviada con Éxito</h3>
+                  <p class="success-message">
+                    Tu consulta de proyecto ha sido añadida a la lista de espera de clientes privados de Gabriela. También se ha guardado de forma segura en la memoria caché de tu navegador.
+                  </p>
+                </div>
+  
+                <!-- Summary receipt details -->
+                <div class="receipt-box"></div>
+  
+                <div class="success-actions">
+                  <button type="button" class="btn-success-track" id="btn-success-track">Seguimiento en Vivo</button>
+                  <button type="button" class="btn-success-reset" id="btn-success-reset">Enviar Otra</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Elegant Editorial Footer -->
+        <footer class="footer" style="width: 100%; border-top: 1px solid var(--color-border); padding: 1.5rem 0;">
+          <div class="footer-watermark">GA.</div>
+          <div class="max-width-container footer-container">
+            <div class="footer-logo">GA.</div>
+            <div class="footer-socials">
+              <a href="https://www.instagram.com/alcantara1l/?hl=es" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+              <a href="https://www.linkedin.com/in/gabriela-alcántara-61393b328/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+              <a href="https://www.behance.net/ALCANTARA1L" target="_blank" rel="noopener noreferrer">BEHANCE</a>
+            </div>
+            <p class="footer-copy" style="margin: 0;">© 2026 GABRIELA ALCÁNTARA</p>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <!-- Floating WhatsApp Contact Link with Bubble badge -->
+    <a href="https://wa.me/584129704404" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Escríbeme por WhatsApp">
+      <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+      </svg>
+      <span class="whatsapp-badge">1</span>
+    </a>
+
+    <!-- Side Drawers Panel Elements -->
+    <div id="drawer-backdrop" class="drawer-backdrop"></div>
+    
+    <!-- Project detail panel -->
+    <div id="project-drawer" class="drawer-panel drawer-panel-project"></div>
+    
+    <!-- Desk tracker drawer panel -->
+    <div id="tracker-drawer" class="drawer-panel drawer-panel-tracker">
+      <div class="drawer-header">
+        <div class="tracker-header-title">
+          <span class="tracker-green-dot"></span>
+          Centro de Alineación de Gabriela
+        </div>
+        <button class="tracker-close-circle" id="tracker-drawer-close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="drawer-body">
+        <div class="tracker-body">
+          <div>
+            <span class="tracker-header-sub">Estado de la Lista de Clientes Activos</span>
+            <p class="tracker-desc" style="margin-top: 0.5rem;">
+              Esta sección simula la admisión de clientes en tiempo real. Las consultas se guardan localmente en la memoria caché del navegador. Gabriela suele revisar las propuestas dentro de un ciclo comercial.
+            </p>
+          </div>
+          
+          <div style="border-top: 1px solid rgba(17, 17, 17, 0.5); padding-top: 1.5rem;">
+            <span class="tracker-list-label">Consultas en Espera (<span class="desk-count">0</span>)</span>
+            <div id="inquiries-list-container"></div>
+          </div>
+        </div>
+      </div>
+      <div class="tracker-footer">
+        <span>Estado de la Oficina</span>
+        <span class="tracker-status-online">
+          <span class="tracker-status-online-dot"></span>
+          Aceptando Briefings
+        </span>
+      </div>
+    </div>
+
+    <!-- Vanilla Javascript Logic execution -->
+    <script>
+    const PROJECTS = [
+  // --- ELEMENTOS DE FLYERS-REDES (21 items ordenados) ---
+  {
+    id: 'redes-1',
+    title: 'Amistad CTD',
+    category: 'Redes Sociales',
+    year: '2024',
+    description: 'Ilustración artística conceptual que representa la sinergia y el trabajo colaborativo.',
+    role: 'Diseñadora Visual',
+    image: './images/flyers-redes/Amistad CTD(NUEVO) (1).jpg',
+    details: {
+      client: 'Academia CTD',
+      challenge: 'Expresar la cercanía y la creatividad humana en un formato visual fluido y adaptativo.',
+      solution: 'Diseñé una ilustración digital con paleta orgánica y trazados vectoriales limpios.',
+      gridSystem: 'Esquema libre de composición circular.',
+      typography: 'Outfit Light & Outfit Bold',
+      colorPalette: ['#EAE5D9', '#3D5A80', '#98C1D9', '#293241'],
+      scope: ['Ilustración Vectorial', 'Teoría del Color', 'Identidad Académica']
+    }
+  },
+  {
+    id: 'redes-2',
+    title: 'Campaña CapCut',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Estrategia visual y de branding para plantillas y campañas promocionales de CapCut.',
+    role: 'Diseñadora de Medios Digitales',
+    image: './images/flyers-redes/Capcut.jpg',
+    details: {
+      client: 'Creadores Independientes',
+      challenge: 'Atraer la atención en los feeds dinámicos de redes sociales mediante miniaturas e identidades de alto impacto.',
+      solution: 'Creé portadas vibrantes y dinámicas con degradados saturados y elementos tipográficos que saltan a la vista.',
+      gridSystem: 'Diseño en formato 16:9 adaptable a layouts móviles.',
+      typography: 'Outfit Black & Space Grotesk',
+      colorPalette: ['#050014', '#00FFFF', '#FF007F', '#FFFFFF'],
+      scope: ['Diseño para Social Media', 'Composición de Miniaturas', 'Branding Digital']
+    }
+  },
+  {
+    id: 'redes-3',
+    title: 'IA para Adultos',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Diseño publicitario conceptual centrado en cursos y herramientas de inteligencia artificial aplicada.',
+    role: 'Diseñadora Publicitaria',
+    image: './images/flyers-redes/IA para adulto.jpg',
+    details: {
+      client: 'Plataforma EduTech',
+      challenge: 'Hacemos que un tema tecnológico abstracto sea accesible y visualmente atractivo para un público profesional maduro.',
+      solution: 'Desarrollé una composición minimalista con un punto focal tipográfico fuerte y tonalidades sobrias.',
+      gridSystem: 'Esquema de foco central de 8 columnas.',
+      typography: 'Montserrat Bold & Inter Mono',
+      colorPalette: ['#030303', '#FFFFFF', '#0B3C5D', '#328CC1'],
+      scope: ['Campañas de Educación', 'Diseño Tipográfico', 'Estrategia Visual']
+    }
+  },
+  {
+    id: 'redes-4',
+    title: 'Campaña de Contenido I',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Composición visual y estilográfica optimizada para publicaciones y stories en plataformas móviles.',
+    role: 'Visual Content Designer',
+    image: './images/flyers-redes/IMG_7363.jpg',
+    details: {
+      client: 'Diseño Personal',
+      challenge: 'Estructurar una jerarquía visual clara que capte la atención del usuario en menos de 2 segundos.',
+      solution: 'Implementé una grilla asimétrica con bloques tipográficos bold y contrastes de color controlados.',
+      gridSystem: 'Retícula clásica modular.',
+      typography: 'Outfit Bold & Inter Tight',
+      colorPalette: ['#0A0A0A', '#FFFFFF', '#F3F4F6'],
+      scope: ['Social Media Art', 'Estrategia de Retención', 'Composición Visual']
+    }
+  },
+  {
+    id: 'redes-5',
+    title: 'Campaña de Contenido II',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Segunda pieza de contenido enfocado en la interacción y flujo estético del feed de marca.',
+    role: 'Visual Content Designer',
+    image: './images/flyers-redes/IMG_7364.jpg',
+    details: {
+      client: 'Diseño Personal',
+      challenge: 'Continuar la consistencia estética de la campaña utilizando nuevos bloques geométricos y filetes estéticos.',
+      solution: 'Diseñé secciones basadas en líneas guía de estilo Figma y elementos vectoriales en planos superpuestos.',
+      gridSystem: 'Retícula clásica modular.',
+      typography: 'Outfit Variable & Space Mono',
+      colorPalette: ['#000000', '#F2F2F2', '#EAEAEA'],
+      scope: ['Social Media Art', 'Diseño de Plantillas', 'Figma Guidelines Styling']
+    }
+  },
+  {
+    id: 'redes-6',
+    title: 'Campaña de Contenido III',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Variante de publicación centrada en degradados modernos y tipografía extra bold para llamadas de atención.',
+    role: 'Visual Content Designer',
+    image: './images/flyers-redes/IMG_7365.jpg',
+    details: {
+      client: 'Diseño Personal',
+      challenge: 'Introducir una paleta de color audaz y saturada que destaque en feeds oscuros y claros.',
+      solution: 'Desarrollé una combinación bicolor súper saturada utilizando tipografía sans-serif de gran peso tipográfico.',
+      gridSystem: 'Esquema libre central.',
+      typography: 'Montserrat ExtraBold & Inter Regular',
+      colorPalette: ['#121212', '#FFA500', '#FFFFFF'],
+      scope: ['Social Media Art', 'Composición cromática', 'Diseño de Títulos']
+    }
+  },
+  {
+    id: 'redes-7',
+    title: 'Campaña de Contenido IV',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Composición tipográfica en plano cerrado enfocada en marcas y símbolos vectoriales estilizados.',
+    role: 'Visual Content Designer',
+    image: './images/flyers-redes/IMG_7366.jpg',
+    details: {
+      client: 'Diseño Personal',
+      challenge: 'Mostrar marcas conceptuales respetando el orden y el minimalismo en un espacio reducido.',
+      solution: 'Maqueté una cuadrícula modular limpia con filetes delgados y etiquetas estéticas tipo Figma.',
+      gridSystem: 'Cuadrícula estricta de 2x2.',
+      typography: 'Recoleta Bold & Space Mono',
+      colorPalette: ['#0B0B0C', '#FFFFFF', '#CCCCCC'],
+      scope: ['Social Media Art', 'Diseño de Logotipos', 'Identidad Visual']
+    }
+  },
+  {
+    id: 'redes-8',
+    title: 'Campaña de Contenido V',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Post corporativo y de presentación para la captación de briefs y leads comerciales.',
+    role: 'Visual Content Designer',
+    image: './images/flyers-redes/IMG_7367.jpg',
+    details: {
+      client: 'Diseño Personal',
+      challenge: 'Garantizar el contraste cromático óptimo para que la pieza resalte en entornos móviles saturados de luz.',
+      solution: 'Utilicé una combinación saturada bicolor con grandes bloques de color y tipografía sans-serif extra-negrita.',
+      gridSystem: 'Retícula suiza de 3 columnas.',
+      typography: 'Montserrat ExtraBold & Neue Haas Grotesk',
+      colorPalette: ['#000000', '#FF3B30', '#FFFFFF'],
+      scope: ['Social Media Art', 'Estrategia de Conversión', 'Detalle Gráfico']
+    }
+  },
+  {
+    id: 'redes-9',
+    title: 'Campaña de Contenido VI',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Pieza promocional interactiva para destacar servicios de diseño de alta gama y consultoría.',
+    role: 'Visual Content Designer',
+    image: './images/flyers-redes/IMG_7368 (1).jpg',
+    details: {
+      client: 'Diseño Personal',
+      challenge: 'Estructurar una landing digital o post que logre altas tasas de retención simplificando la lectura.',
+      solution: 'Diseñé secciones basadas en amplios márgenes en blanco, tarjetas asimétricas y menús interactivos minimalistas.',
+      gridSystem: 'Estructura adaptable de 8 columnas.',
+      typography: 'Montserrat Bold & Inter Tight Regular',
+      colorPalette: ['#FFFFFF', '#0B0B0C', '#4F46E5'],
+      scope: ['Social Media Art', 'Diseño de CTA', 'Optimización Visual']
+    }
+  },
+  {
+    id: 'redes-10',
+    title: 'Post de Instagram',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Plantilla y diseño promocional interactivo optimizado para publicaciones en redes sociales.',
+    role: 'Social Media Designer',
+    image: './images/flyers-redes/Post insta2.png',
+    details: {
+      client: 'Agencia de Marketing Creativo',
+      challenge: 'Lograr legibilidad y retención del usuario en pantallas móviles pequeñas.',
+      solution: 'Optimicé los pesos tipográficos y usé contenedores de alto contraste con márgenes limpios.',
+      gridSystem: 'Retícula cuadrada simétrica 1:1.',
+      typography: 'Montserrat Bold & Inter Regular',
+      colorPalette: ['#0A0A0A', '#F2F2F2', '#333333'],
+      scope: ['Diseño de Plantillas', 'Estrategia de Contenido Visual', 'Optimización Móvil']
+    }
+  },
+  {
+    id: 'redes-11',
+    title: 'Valla AI Kids II',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Variante de la campaña de valla publicitaria infantil enfocada en redes sociales.',
+    role: 'Diseñadora de Vallas Publicitarias',
+    image: './images/flyers-redes/VALLA HUMANA AI KIDS post.jpg',
+    details: {
+      client: 'Organización Tecnológica Infantil',
+      challenge: 'Adaptar el diseño de valla publicitaria gigante a un formato cuadrado idóneo para Instagram sin perder legibilidad.',
+      solution: 'Reorganicé los bloques tipográficos verticalmente y centré los isotipos principales.',
+      gridSystem: 'Cuadrícula cuadrada modular.',
+      typography: 'Outfit Bold & Inter Tight',
+      colorPalette: ['#FFFFFF', '#121212', '#FFA500'],
+      scope: ['Adaptación de Layout', 'Diseño de Redes Sociales', 'Estrategia Multicanal']
+    }
+  },
+  {
+    id: 'redes-12',
+    title: 'Carrusel de Marketing I',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Diseño continuo de carruseles interactivos de información para plataformas comerciales.',
+    role: 'Diseñadora de Contenidos',
+    image: './images/flyers-redes/carrucel-de-marketing(opcion)_01.jpg',
+    details: {
+      client: 'Agencia de Crecimiento Digital',
+      challenge: 'Garantizar una continuidad visual fluida entre las diferentes diapositivas del carrusel para retener al lector.',
+      solution: 'Diseñé guías tipográficas y elementos gráficos fluidos que se extienden a través de los bordes de las tarjetas.',
+      gridSystem: 'Retícula horizontal modular.',
+      typography: 'Montserrat Bold & Inter Regular',
+      colorPalette: ['#080808', '#FFFFFF', '#0F16A5'],
+      scope: ['Diseño de Carrusel', 'Arquitectura de Información', 'Estrategia de Conversión']
+    }
+  },
+  {
+    id: 'redes-13',
+    title: 'Carrusel de Marketing II',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Segunda sección del carrusel continuo centrado en consejos prácticos de diseño de marca.',
+    role: 'Diseñadora de Contenidos',
+    image: './images/flyers-redes/carrucel-de-marketing(opcion)_02.jpg',
+    details: {
+      client: 'Agencia de Crecimiento Digital',
+      challenge: 'Mantener la coherencia estética en la segunda parte del carrusel introduciendo llamadas a la acción directas.',
+      solution: 'Incluí botones estilizados de llamada a la acción enmarcados en cajas asimétricas de estilo Figma.',
+      gridSystem: 'Retícula horizontal modular.',
+      typography: 'Montserrat Bold & Inter SemiBold',
+      colorPalette: ['#080808', '#FFFFFF', '#10B981'],
+      scope: ['Diseño de Carrusel', 'Diseño de CTA', 'Marketing de Contenidos']
+    }
+  },
+  {
+    id: 'redes-14',
+    title: 'Carrusel de Marketing III',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Tercera sección del carrusel continuo que resume los consejos de marketing digital.',
+    role: 'Diseñadora de Contenidos',
+    image: './images/flyers-redes/carrucel-de-marketing(opcion)_03.jpg',
+    details: {
+      client: 'Agencia de Crecimiento Digital',
+      challenge: 'Consolidar los conceptos explicados en las láminas anteriores con una composición visual memorable.',
+      solution: 'Diseñé infografías limpias con iconos vectoriales y bloques tipográficos robustos.',
+      gridSystem: 'Retícula horizontal modular.',
+      typography: 'Montserrat Bold & Inter Medium',
+      colorPalette: ['#080808', '#FFFFFF', '#F26419'],
+      scope: ['Diseño de Carrusel', 'Infografía Digital', 'Marketing de Contenidos']
+    }
+  },
+  {
+    id: 'redes-15',
+    title: 'Curso Redes Sociales II',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Variante de post promocional con estructura asimétrica y colores contrastantes.',
+    role: 'Diseñadora Visual',
+    image: './images/flyers-redes/curso para redes sociales(nuevoPOST).jpg',
+    details: {
+      client: 'Plataforma Digital de Cursos',
+      challenge: 'Crear una alternativa compositiva de post para pruebas A/B en campañas de conversión.',
+      solution: 'Reorganicé las jerarquías textuales ubicando el título principal en una diagonal de fuerza descendente.',
+      gridSystem: 'Ejes diagonales descentrados.',
+      typography: 'Montserrat Bold & Outfit Light',
+      colorPalette: ['#121212', '#FFFFFF', '#E91E63'],
+      scope: ['Campañas de Conversión', 'Diseño de Variaciones', 'Identidad de Campaña']
+    }
+  },
+  {
+    id: 'redes-16',
+    title: 'Diseño Especialidad G',
+    category: 'Redes Sociales',
+    year: '2024',
+    description: 'Logotipo y desarrollo de monograma de marca premium para un estudio de diseño exclusivo.',
+    role: 'Diseñadora de Logotipos',
+    image: './images/flyers-redes/diseño G especialidad.jpg',
+    details: {
+      client: 'Estudio de Diseño G',
+      challenge: 'Construir una letra "G" emblemática que actúe como isotipo independiente y transmita lujo, orden y minimalismo.',
+      solution: 'Diseñé una tipografía geométrica con terminaciones simétricas perfectas y guías de construcción radiales doradas.',
+      gridSystem: 'Construcción en base a círculos concéntricos.',
+      typography: 'Montserrat Variable & Syne Bold',
+      colorPalette: ['#0A0A0A', '#C3A05D', '#FFFFFF'],
+      scope: ['Diseño de Monogramas', 'Branding de Lujo', 'Planos de Construcción']
+    }
+  },
+  {
+    id: 'redes-17',
+    title: 'Proyecto Final Marcas',
+    category: 'Redes Sociales',
+    year: '2024',
+    description: 'Cartel y sistema visual completo para la exposición del proyecto final de carrera.',
+    role: 'Directora de Arte',
+    image: './images/flyers-redes/marcasPoster-tecnologia avanzada-ProyectoFinal.jpg',
+    details: {
+      client: 'Facultad de Artes y Diseño',
+      challenge: 'Representar múltiples marcas y conceptos visuales desarrollados durante el ciclo académico en un único poster integrador.',
+      solution: 'Creé un diseño basado en un panel de logotipos ordenado en una cuadrícula estricta con filetes grises de estilo Figma.',
+      gridSystem: 'Cuadrícula estricta de 4x4 módulos.',
+      typography: 'Montserrat Bold & Space Mono',
+      colorPalette: ['#000000', '#F2F2F2', '#333333'],
+      scope: ['Sistemas de Marcas', 'Diseño de Stands', 'Dirección de Exposición']
+    }
+  },
+  {
+    id: 'redes-18',
+    title: 'Página Web Curso',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Maquetación visual e interactiva para la plataforma web de cursos de marketing.',
+    role: 'Diseñadora UX/UI',
+    image: './images/flyers-redes/pagina web curso.jpg',
+    details: {
+      client: 'Academia de Creadores Digitales',
+      challenge: 'Estructurar una landing page que logre altas tasas de retención simplificando la lectura de los planes de estudio.',
+      solution: 'Diseñé secciones basadas en amplios márgenes en blanco, tarjetas asimétricas y menús interactivos minimalistas.',
+      gridSystem: 'Estructura adaptable de 12 columnas web.',
+      typography: 'Montserrat Bold & Inter Tight Regular',
+      colorPalette: ['#FFFFFF', '#0B0B0C', '#4F46E5'],
+      scope: ['Estructuración UX/UI', 'Maquetación Web', 'Prototipado Interactivo']
+    }
+  },
+  {
+    id: 'redes-19',
+    title: 'Diseño Especial Panettone',
+    category: 'Redes Sociales',
+    year: '2024',
+    description: 'Branding y pieza promocional digital de alta gama para productos gourmet de repostería artesanal.',
+    role: 'Diseñadora de Empaque & Contenido',
+    image: './images/flyers-redes/panetone.png',
+    details: {
+      client: 'Repostería Italiana Fina',
+      challenge: 'Transmitir la frescura y la tradición de un pan dulce clásico mediante una pieza de marketing digital elegante.',
+      solution: 'Utilicé una composición fotográfica con sombras suaves, contrastes dorados y tipografía con serifa premium.',
+      gridSystem: 'Composición clásica asimétrica.',
+      typography: 'Cormorant Garamond & Montserrat Light',
+      colorPalette: ['#1F0E04', '#D4AF37', '#FFFFFF'],
+      scope: ['Dirección de Fotografía', 'Diseño de Contenido', 'Branding Gourmet']
+    }
+  },
+  {
+    id: 'redes-20',
+    title: 'Post de Instagram III',
+    category: 'Redes Sociales',
+    year: '2025',
+    description: 'Tercera propuesta promocional de contenido para Instagram con tipografía y diseño minimalista.',
+    role: 'Social Media Designer',
+    image: './images/flyers-redes/post insta3.png',
+    details: {
+      client: 'Agencia de Marketing Creativo',
+      challenge: 'Lograr legibilidad y retención del usuario en pantallas móviles pequeñas usando una propuesta monocromática.',
+      solution: 'Optimicé los pesos tipográficos y usé contenedores de alto contraste con márgenes limpios y aireados.',
+      gridSystem: 'Retícula cuadrada simétrica 1:1.',
+      typography: 'Montserrat Bold & Inter Regular',
+      colorPalette: ['#0A0A0A', '#FFFFFF', '#CCCCCC'],
+      scope: ['Diseño de Plantillas', 'Estrategia de Contenido Visual', 'Optimización Móvil']
+    }
+  },
+  {
+    id: 'redes-21',
+    title: 'Poster Publicitario',
+    category: 'Redes Sociales',
+    year: '2024',
+    description: 'Campaña publicitaria de afiche para promoción urbana contemporánea.',
+    role: 'Diseñadora Publicitaria',
+    image: './images/flyers-redes/poster publicitario-Recuperado.jpg',
+    details: {
+      client: 'Estudio de Comunicación Urbana',
+      challenge: 'Garantizar el contraste cromático óptimo para que la pieza resalte en entornos urbanos saturados de luz.',
+      solution: 'Utilicé una combinación saturada bicolor con grandes bloques de color y tipografía sans-serif extra-negrita.',
+      gridSystem: 'Retícula suiza de 3 columnas.',
+      typography: 'Montserrat ExtraBold & Neue Haas Grotesk',
+      colorPalette: ['#000000', '#FF3B30', '#FFFFFF'],
+      scope: ['Diseño de Afiches', 'Estrategia de Comunicación', 'Control de Contraste']
+    }
+  },
+
+  // --- ELEMENTOS EXCLUSIVOS DE OTRAS SECCIONES (Para Filtros Complementarios) ---
+  {
+    id: 'pub-afiche',
+    title: 'Afiche Promocional',
+    category: 'Diseño Gráfico',
+    year: '2024',
+    description: 'Afiche promocional de alta calidad con un concepto visual moderno y limpio.',
+    role: 'Diseñadora Gráfica Principal',
+    image: './images/publicidad/mupi3.jpg',
+    details: {
+      client: 'Diseño Independiente',
+      challenge: 'Comunicar una propuesta de valor de manera directa y visualmente impactante utilizando elementos tipográficos fuertes.',
+      solution: 'Desarrollé un afiche estructural con jerarquía clara y composición asimétrica de alto impacto.',
+      gridSystem: 'Retícula clásica de 6 columnas.',
+      typography: 'Montserrat Bold & Inter Tight',
+      colorPalette: ['#0A0A0A', '#FFFFFF', '#CCCCCC'],
+      scope: ['Dirección de Arte', 'Diseño de Cartelería', 'Composición Tipográfica']
+    }
+  },
+  {
+    id: 'pub-beisbol',
+    title: 'Béisbol Historia',
+    category: 'Diseño Publicitario',
+    year: '2023',
+    description: 'Concepto publicitario dinámico inspirado en la historia y energía del deporte del béisbol.',
+    role: 'Directora Creativa',
+    image: './images/publicidad/mupi4.jpg',
+    details: {
+      client: 'Liga de Béisbol Profesional',
+      challenge: 'Fusionar la nostalgia histórica del deporte con una estética publicitaria moderna y activa.',
+      solution: 'Utilicé texturas grunge de papel envejecido combinadas con siluetas dinámicas de jugadores y tipografías sans-serif bold.',
+      gridSystem: 'Diseño de cartel dinámico con líneas diagonales de fuerza.',
+      typography: 'Montserrat ExtraBold & Bebas Neue',
+      colorPalette: ['#1C0202', '#C6A15B', '#F5F5F5'],
+      scope: ['Diseño de Campaña', 'Dirección Fotográfica', 'Acabados Texturizados']
+    }
+  },
+  {
+    id: 'pub-offset',
+    title: 'Cartel Offset',
+    category: 'Diseño Editorial',
+    year: '2024',
+    description: 'Propuesta técnica e ilustrativa para carteles impresos en tecnología offset tradicional.',
+    role: 'Especialista en Pre-Prensa',
+    image: './images/publicidad/mupi5.jpg',
+    details: {
+      client: 'Taller de Impresión Offset',
+      challenge: 'Garantizar la máxima fidelidad cromática y registro perfecto para una reproducción masiva en papel de alto gramaje.',
+      solution: 'Configuré el control estricto de separaciones de color CMYK y agregué marcas de registro estéticas integradas al diseño del poster.',
+      gridSystem: 'Retícula editorial rígida de 12 columnas.',
+      typography: 'Clash Display & Helvetica Neue',
+      colorPalette: ['#000000', '#00FFFF', '#FF00FF'],
+      scope: ['Preparación de Archivos', 'Control de CMYK', 'Diseño de Cartelería Técnica']
+    }
+  },
+  {
+    id: 'pub-revista',
+    title: 'Portada de Revista',
+    category: 'Diseño Editorial',
+    year: '2024',
+    description: 'Diseño conceptual y maquetación de una portada premium para revista de arte contemporáneo.',
+    role: 'Diseñadora Editorial',
+    image: './images/publicidad/Copia de portada para la revista-Recuperado.jpg',
+    details: {
+      client: 'Revista Estética & Letras',
+      challenge: 'Equilibrar una gran fotografía de portada con titulares tipográficos legibles y limpios sin saturar el espacio visual.',
+      solution: 'Maqueté una composición limpia respetando amplios márgenes y ubicando el texto en zonas de contraste óptimo.',
+      gridSystem: 'Cuadrícula editorial asimétrica de 4 columnas.',
+      typography: 'Recoleta Bold & Inter Light',
+      colorPalette: ['#1A1A1A', '#F0EAD6', '#8B0000'],
+      scope: ['Maquetación Editorial', 'Diseño de Portadas', 'Corrección de Color']
+    }
+  },
+  {
+    id: 'pub-pepsi1',
+    title: 'Rediseño Pepsi I',
+    category: 'Identidad de Marca',
+    year: '2024',
+    description: 'Propuesta de rediseño de cartel y publicidad exterior para la campaña global de Pepsi.',
+    role: 'Diseñadora de Marca',
+    image: './images/publicidad/Copia de poster 1 Rediseño de campaña pepsi.jpg',
+    details: {
+      client: 'Estudio de Rediseño de Marcas',
+      challenge: 'Reinterpretar el branding tradicional de una marca masiva para encajar en una estética de cartel publicitario artístico contemporáneo.',
+      solution: 'Utilicé una composición en blanco y negro de alto contraste con salpicaduras azules y un tratamiento tipográfico estilizado y audaz.',
+      gridSystem: 'Retícula vertical asimétrica.',
+      typography: 'Bebas Neue & Montserrat ExtraBold',
+      colorPalette: ['#000000', '#0F16A5', '#FFFFFF'],
+      scope: ['Concepto de Campaña', 'Branding Experimental', 'Diseño de Posters']
+    }
+  },
+  {
+    id: 'pub-pepsi3',
+    title: 'Rediseño Pepsi III',
+    category: 'Identidad de Marca',
+    year: '2024',
+    description: 'Variación de cartel para la campaña de Pepsi centrada en formas geométricas y dinamismo visual.',
+    role: 'Diseñadora de Marca',
+    image: './images/publicidad/Copia de poster III campaña Pepsi.jpg',
+    details: {
+      client: 'Estudio de Rediseño de Marcas',
+      challenge: 'Mantener la coherencia conceptual de la campaña utilizando una estructura compositiva diferente.',
+      solution: 'Diseñé una cuadrícula diagonal dinámica que resalta el movimiento y el flujo de los elementos de marca.',
+      gridSystem: 'Líneas guías diagonales cruzadas.',
+      typography: 'Bebas Neue & Montserrat Bold',
+      colorPalette: ['#000000', '#0F16A5', '#E31B23'],
+      scope: ['Branding Corporativo', 'Dirección Creativa', 'Diseño Gráfico']
+    }
+  },
+  {
+    id: 'pub-cartel-prom',
+    title: 'Cartel Promocional Personal',
+    category: 'Diseño Gráfico',
+    year: '2024',
+    description: 'Diseño de afiche impreso corporativo de alto impacto visual y tipográfico.',
+    role: 'Diseñadora Gráfica',
+    image: './images/publicidad/mupi6.jpg',
+    details: {
+      client: 'Portafolio Personal',
+      challenge: 'Desarrollar una pieza gráfica que sirva como escaparate de técnicas de composición tipográfica avanzada.',
+      solution: 'Compuse un collage asimétrico superponiendo tipografías de alto peso tipográfico con filetes técnicos y guías vectoriales.',
+      gridSystem: 'Retícula editorial libre.',
+      typography: 'Montserrat Black & Courier New',
+      colorPalette: ['#0A0A0A', '#FFFFFF', '#FF3B30'],
+      scope: ['Diseño de Carteles', 'Experimentación Tipográfica', 'Dirección de Arte']
+    }
+  },
+  {
+    id: 'pub-tipografico',
+    title: 'Cartel Tipográfico',
+    category: 'Tipografía',
+    year: '2023',
+    description: 'Obra conceptual que explora la forma física y la anatomía tipográfica de las letras.',
+    role: 'Diseñadora Tipográfica',
+    image: './images/publicidad/cartel tipografico [Recuperado]_Mesa de trabajo 1.jpg',
+    details: {
+      client: 'Exposición de Arte y Letra',
+      challenge: 'Representar los ejes tipográficos, nodos y líneas de caja de texto que revelan la construcción geométrica del glifo.',
+      solution: 'Dibujé vectores descriptivos dorados y líneas de caja de texto que revelan la construcción geométrica del glifo.',
+      gridSystem: 'Esquema de construcción tipográfica.',
+      typography: 'Montserrat Variable & Editorial New Italic',
+      colorPalette: ['#000000', '#C3A05D', '#F2F2F2'],
+      scope: ['Diseño de Glifos', 'Cartel de Exposición', 'Detallado de Nodos']
+    }
+  },
+  {
+    id: 'pub-mupi1',
+    title: 'Campaña Mupi I',
+    category: 'Posters & Publicidad',
+    year: '2024',
+    description: 'Publicidad exterior y diseño de cartel para mobiliario urbano (Mupi).',
+    role: 'Diseñadora Publicitaria',
+    image: './images/publicidad/mupi 1(final).jpg',
+    details: {
+      client: 'Campaña Urbana Comercial',
+      challenge: 'Captar la atención de peatones y conductores a nivel de calle con un mensaje claro e instantáneo.',
+      solution: 'Utilicé una jerarquía de textos fuerte, colores saturados en la base y márgenes de seguridad amplios.',
+      gridSystem: 'Estructura vertical clásica de mupis.',
+      typography: 'Outfit Black & Inter Tight',
+      colorPalette: ['#121212', '#FFFFFF', '#0F16A5'],
+      scope: ['Publicidad Exterior', 'Mupis Urbanos', 'Diseño de Campaña']
+    }
+  },
+  {
+    id: 'pub-mupi2',
+    title: 'Campaña Mupi II',
+    category: 'Posters & Publicidad',
+    year: '2024',
+    description: 'Segunda pieza gráfica de gran escala para la campaña de publicidad en mobiliario urbano.',
+    role: 'Diseñadora Publicitaria',
+    image: './images/publicidad/mupi 2.jpg',
+    details: {
+      client: 'Campaña Urbana Comercial',
+      challenge: 'Mantener la consistencia con el estilo de la primera pieza variando el punto focal visual.',
+      solution: 'Estructuré el diseño en base a tipografías geométricas gigantes y una cuadrícula muy espaciada.',
+      gridSystem: 'Estructura vertical clásica de mupis.',
+      typography: 'Outfit Bold & Space Mono',
+      colorPalette: ['#FFFFFF', '#0A0A0A', '#E31B23'],
+      scope: ['Publicidad Exterior', 'Mupis Urbanos', 'Diseño de Campaña']
+    }
+  },
+  {
+    id: 'pub-mupi3',
+    title: 'Campaña Mupi III',
+    category: 'Posters & Publicidad',
+    year: '2024',
+    description: 'Tercera propuesta para la campaña de publicidad exterior sobre paradas urbanas.',
+    role: 'Diseñadora Publicitaria',
+    image: './images/publicidad/mupi3.jpg',
+    details: {
+      client: 'Campaña Urbana Comercial',
+      challenge: 'Garantizar una legibilidad óptima en horarios nocturnos bajo luz artificial del mupi.',
+      solution: 'Apliqué un fondo oscuro de alta densidad y elementos fluorescentes vectoriales.',
+      gridSystem: 'Estructura vertical clásica.',
+      typography: 'Montserrat Bold & Inter Light',
+      colorPalette: ['#050014', '#00FFFF', '#FFFFFF'],
+      scope: ['Publicidad Exterior', 'Mupis Urbanos', 'Dirección de Arte']
+    }
+  },
+  {
+    id: 'pub-mupi4',
+    title: 'Campaña Mupi IV',
+    category: 'Posters & Publicidad',
+    year: '2024',
+    description: 'Cuarta propuesta publicitaria para mupis urbanos con estilo dinámico y deportivo.',
+    role: 'Diseñadora Publicitaria',
+    image: './images/publicidad/mupi4.jpg',
+    details: {
+      client: 'Liga de Béisbol y Deporte',
+      challenge: 'Expresar movimiento y fuerza en una pieza de publicidad estática vertical.',
+      solution: 'Utilicé siluetas diagonales y texturas de papel rasgado superpuestas sobre tipografías bold.',
+      gridSystem: 'Líneas guías diagonales de fuerza.',
+      typography: 'Bebas Neue & Montserrat ExtraBold',
+      colorPalette: ['#1C0202', '#C6A15B', '#FFFFFF'],
+      scope: ['Publicidad Exterior', 'Diseño Deportivo', 'Composición de Carteles']
+    }
+  },
+  {
+    id: 'pub-mupi5',
+    title: 'Campaña Mupi V',
+    category: 'Posters & Publicidad',
+    year: '2024',
+    description: 'Quinta propuesta publicitaria enfocada en cartelería técnica y marcas.',
+    role: 'Diseñadora Publicitaria',
+    image: './images/publicidad/mupi5.jpg',
+    details: {
+      client: 'Taller de Impresión y Pre-Prensa',
+      challenge: 'Configurar un archivo de gran tamaño con colores CMYK puros y guías Figma integradas.',
+      solution: 'Configuré un panel con filetes limpios y marcas de registro para que formen parte de la estética.',
+      gridSystem: 'Cuadrícula editorial de 12 columnas.',
+      typography: 'Clash Display & Helvetica Neue',
+      colorPalette: ['#000000', '#00FFFF', '#FF00FF'],
+      scope: ['Pre-Prensa', 'Diseño de Cartelería Técnica', 'Mupis Urbanos']
+    }
+  },
+  {
+    id: 'pub-mupi6',
+    title: 'Campaña Mupi VI',
+    category: 'Posters & Publicidad',
+    year: '2024',
+    description: 'Sexta variante para la campaña exterior urbana de Gabriela Alcántara.',
+    role: 'Diseñadora Publicitaria',
+    image: './images/publicidad/mupi6.jpg',
+    details: {
+      client: 'Portafolio Personal',
+      challenge: 'Desarrollar una pieza asimétrica que juegue con el espacio en blanco y el peso de las letras.',
+      solution: 'Compuse un bloque de glifos en planos asimétricos con cortes geométricos limpios.',
+      gridSystem: 'Cuadrícula libre de composición.',
+      typography: 'Montserrat Variable & Syne Bold',
+      colorPalette: ['#0A0A0A', '#FFFFFF', '#CCCCCC'],
+      scope: ['Publicidad Exterior', 'Mupis Urbanos', 'Diseño de Carteles']
+    }
+  },
+
+  // --- ELEMENTOS DE IDENTIDAD DE MARCA (identidad-1) ---
+  // Se insertarán los 24 elementos dinámicamente al final de la definición de PROJECTS.
+];
+
+// Insertamos dinámicamente los 24 elementos del manual de identidad de marca (identidad-1)
+const manualImages = [
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_01.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_02.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_03.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_04.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_05.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_06.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_07.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_08.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_09.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_10.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_11.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_12.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_13.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_14.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_15.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_16.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_17.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_18.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_19.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_20.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_21.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_22.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_23.jpg',
+  './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_24.jpg'
+];
+
+manualImages.forEach((img, idx) => {
+  PROJECTS.push({
+    id: `identidad-1-p${idx + 1}`,
+    title: 'Alcántara Innova',
+    category: 'Identidad de Marca',
+    year: '2024',
+    description: `Manual de identidad corporativa y guías de uso de marca integral (Página ${idx + 1} de 24).`,
+    role: 'Diseñadora de Identidades Principales',
+    image: img,
+    images: manualImages,
+    details: {
+      client: 'Estudio Creativo Alquimia',
+      challenge: 'Garantizar el uso estricto y correcto de la marca a lo largo de 24 secciones detalladas que abarcan papelería, tipografías y reglas de aislamiento.',
+      solution: 'Desarrollé un libro de marca completo y detallado con retícula suiza rígida y planos técnicos de construcción del isotipo.',
+      gridSystem: 'Retícula clásica de 6 columnas.',
+      typography: 'Montserrat Bold & Inter Tight Regular',
+      colorPalette: ['#0A0A0A', '#FFFFFF', '#CCCCCC'],
+      scope: ['Identidad Corporativa', 'Diseño de Marca', 'Manual de Estilo']
+    }
+  });
+});
+
+// Definición escalable del catálogo de marcas
+const BRAND_IDENTITIES = [
+  {
+    id: 'alcantara',
+    title: 'Alcántara Innova',
+    year: '2024',
+    description: 'Manual de identidad corporativa y guías de uso de marca integral (24 páginas).',
+    role: 'Diseñadora de Identidades Principales',
+    coverImage: './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_01.jpg',
+    status: 'active',
+    filterPrefix: 'identidad-1-p'
+  },
+  {
+    id: 'future1',
+    title: 'Próxima Identidad A',
+    year: '2026',
+    description: 'Proyecto de identidad visual premium en fase de desarrollo.',
+    role: 'Diseñadora de Marca',
+    coverImage: '',
+    status: 'locked'
+  },
+  {
+    id: 'future2',
+    title: 'Próxima Identidad B',
+    year: '2026',
+    description: 'Proyecto de branding estratégico para corporación internacional.',
+    role: 'Diseñadora de Marca',
+    coverImage: '',
+    status: 'locked'
+  }
+];
+
+// --- Control del Libro Digital (Flipbook) Interactivo ---
+let currentFlipbookIndex = 0;
+let flipbookImages = [];
+let resizeTimeout;
+
+function initManualFlipbook(images) {
+  flipbookImages = images;
+  currentFlipbookIndex = 0;
+
+  // Renderizar la estructura del flipbook
+  buildFlipbookHTML();
+
+  // Escuchar el cambio de tamaño de ventana para ajustar entre vista simple (móvil) y doble (escritorio)
+  window.removeEventListener('resize', handleFlipbookResize);
+  window.addEventListener('resize', handleFlipbookResize);
+}
+
+function handleFlipbookResize() {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    if (flipbookImages && flipbookImages.length > 0) {
+      currentFlipbookIndex = 0;
+      buildFlipbookHTML();
+    }
+  }, 200);
+}
+
+function buildFlipbookHTML() {
+  const flipbook = document.getElementById('manual-flipbook');
+  if (!flipbook) return;
+
+  const isMobile = window.innerWidth < 768;
+  flipbook.innerHTML = '';
+  
+  if (isMobile) {
+    // Vista Móvil: 24 hojas individuales simples que se deslizan/voltean
+    flipbookImages.forEach((imgSrc, idx) => {
+      const pageEl = document.createElement('div');
+      pageEl.className = 'flip-sheet';
+      pageEl.innerHTML = `
+        <div class="page-side">
+          <img src="${imgSrc}" alt="Página ${idx + 1}" referrerpolicy="no-referrer" />
+          <div class="page-shade"></div>
+        </div>
+      `;
+      // Permitir pasar página haciendo clic directamente
+      pageEl.addEventListener('click', () => {
+        if (idx === currentFlipbookIndex) {
+          turnFlipbookPage(1);
+        }
+      });
+      flipbook.appendChild(pageEl);
+    });
+  } else {
+    // Vista Escritorio (Mac / PC): 12 hojas dobles 3D reales
+    const totalSheets = Math.ceil(flipbookImages.length / 2);
+    for (let i = 0; i < totalSheets; i++) {
+      const frontImg = flipbookImages[i * 2];
+      const backImg = flipbookImages[i * 2 + 1] || ''; // Por si es impar
+      
+      const sheetEl = document.createElement('div');
+      sheetEl.className = 'flip-sheet';
+      sheetEl.innerHTML = `
+        <div class="page-side">
+          <img src="${frontImg}" alt="Página ${i * 2 + 1}" referrerpolicy="no-referrer" />
+          <div class="page-shade"></div>
+        </div>
+        <div class="page-side back">
+          ${backImg ? `<img src="${backImg}" alt="Página ${i * 2 + 2}" referrerpolicy="no-referrer" />` : ''}
+          <div class="page-shade"></div>
+        </div>
+      `;
+      
+      // Pasar página al hacer clic sobre el lado correspondiente
+      sheetEl.addEventListener('click', (e) => {
+        const isFlipped = sheetEl.classList.contains('flipped');
+        if (!isFlipped && i === currentFlipbookIndex) {
+          turnFlipbookPage(1);
+        } else if (isFlipped && i === currentFlipbookIndex - 1) {
+          turnFlipbookPage(-1);
+        }
+      });
+      
+      flipbook.appendChild(sheetEl);
+    }
+  }
+
+  updateFlipbookView();
+}
+
+function turnFlipbookPage(direction) {
+  const sheets = document.querySelectorAll('#manual-flipbook .flip-sheet');
+  const maxIdx = sheets.length;
+
+  if (direction === 1) {
+    if (currentFlipbookIndex < maxIdx) {
+      const sheet = sheets[currentFlipbookIndex];
+      sheet.classList.remove('turning-right');
+      void sheet.offsetWidth; // Forzar reflow
+      sheet.classList.add('flipped', 'turning-left');
+      currentFlipbookIndex++;
+    }
+  } else if (direction === -1) {
+    if (currentFlipbookIndex > 0) {
+      currentFlipbookIndex--;
+      const sheet = sheets[currentFlipbookIndex];
+      sheet.classList.remove('turning-left');
+      void sheet.offsetWidth; // Forzar reflow
+      sheet.classList.add('turning-right');
+      sheet.classList.remove('flipped');
+    }
+  }
+
+  updateFlipbookView();
+}
+
+function updateFlipbookView() {
+  const isMobile = window.innerWidth < 768;
+  const sheets = document.querySelectorAll('#manual-flipbook .flip-sheet');
+  const totalSheets = sheets.length;
+  const prevBtn = document.getElementById('fb-prev-btn');
+  const nextBtn = document.getElementById('fb-next-btn');
+  const indicator = document.getElementById('fb-indicator');
+
+  // Asignación de z-index dinámico según estén volteadas o no (stacking 3D)
+  sheets.forEach((sheet, idx) => {
+    if (sheet.classList.contains('flipped')) {
+      sheet.style.zIndex = idx;
+    } else {
+      sheet.style.zIndex = totalSheets - idx;
+    }
+  });
+
+  // Habilitar/deshabilitar flechas
+  if (prevBtn) prevBtn.disabled = currentFlipbookIndex === 0;
+  if (nextBtn) nextBtn.disabled = currentFlipbookIndex === totalSheets;
+
+  // Actualizar el indicador de páginas de la revista
+  if (indicator) {
+    if (isMobile) {
+      const currentPage = Math.min(currentFlipbookIndex + 1, totalSheets);
+      indicator.textContent = `Página ${currentPage} de ${totalSheets}`;
+    } else {
+      const totalPages = totalSheets * 2;
+      if (currentFlipbookIndex === 0) {
+        indicator.textContent = `Página 1 de ${totalPages}`;
+      } else if (currentFlipbookIndex === totalSheets) {
+        indicator.textContent = `Página ${totalPages} de ${totalPages}`;
+      } else {
+        const startPage = currentFlipbookIndex * 2;
+        const endPage = currentFlipbookIndex * 2 + 1;
+        indicator.textContent = `Páginas ${startPage} - ${endPage} de ${totalPages}`;
+      }
+    }
+  }
+}
+
+function renderBrandCatalog(subBrandFilter = 'all') {
+  const catalogContainer = document.getElementById('brand-identities-catalog');
+  const listGrid = document.getElementById('brand-list-grid');
+  const detailView = document.getElementById('brand-detail-view');
+  const detailTitle = document.getElementById('brand-detail-title');
+  const subFilterTabs = document.querySelectorAll('.brand-sub-filters .filter-tab');
+
+  if (!catalogContainer || !listGrid || !detailView || !detailTitle) return;
+
+  // Actualizar estado activo en la barra de sub-filtros
+  subFilterTabs.forEach(tab => {
+    const brand = tab.getAttribute('data-brand');
+    if (brand === subBrandFilter) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+
+  if (subBrandFilter === 'all') {
+    detailView.style.display = 'none';
+    listGrid.style.display = 'grid';
+
+    listGrid.innerHTML = BRAND_IDENTITIES.map(brand => {
+      const isLocked = brand.status === 'locked';
+      return `
+        <div class="brand-catalog-card ${isLocked ? 'locked' : ''}" data-brand-id="${brand.id}">
+          <div class="brand-catalog-card-img-wrapper">
+            ${isLocked 
+              ? `<div class="brand-catalog-card-lock-icon">🔒</div>`
+              : `<img src="${brand.coverImage}" alt="${brand.title}" referrerpolicy="no-referrer" loading="lazy" />`
+            }
+          </div>
+          <div class="brand-catalog-card-content">
+            <div class="brand-catalog-card-meta">
+              <span class="brand-catalog-card-tag">${isLocked ? 'Próximamente' : 'Identidad Visual'}</span>
+              <span class="brand-catalog-card-year">${brand.year}</span>
+            </div>
+            <h4 class="brand-catalog-card-title">${brand.title}</h4>
+            <p class="brand-catalog-card-desc">${brand.description}</p>
+            <div class="brand-catalog-card-footer">
+              ${isLocked ? 'Proyecto en desarrollo' : 'Ver Identidad Completa ➔'}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Eventos para las tarjetas
+    listGrid.querySelectorAll('.brand-catalog-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const brandId = card.getAttribute('data-brand-id');
+        const brandObj = BRAND_IDENTITIES.find(b => b.id === brandId);
+        if (brandObj && brandObj.status !== 'locked') {
+          renderBrandCatalog(brandId);
+        }
+      });
+    });
+  } else {
+    listGrid.style.display = 'none';
+    detailView.style.display = 'block';
+
+    const brandObj = BRAND_IDENTITIES.find(b => b.id === subBrandFilter);
+    if (brandObj) {
+      detailTitle.textContent = brandObj.title;
+
+      // Filtrar y ordenar los proyectos asociados a este prefijo
+      const filtered = PROJECTS.filter(p => p.id.startsWith(brandObj.filterPrefix));
+      const images = filtered.map(p => p.image);
+      initManualFlipbook(images);
+    }
+  }
+}
+
+
+const SERVICES = [
+  {
+    id: 'service-1',
+    title: 'Identidad de Marca',
+    description: 'Desarrollo de estructuras visuales cohesivas que definen una verdadera presencia en el mercado, creando una resonancia duradera.',
+    benefits: [
+      'Sistemas de logotipos y diseño de símbolos atemporales y a la medida',
+      'Pautas tipográficas adaptables y exquisitas adaptadas a tu nicho',
+      'Plantillas de identidad visual duraderas para papelería, impresos y redes sociales',
+      'Estrategia de dirección de arte para establecer un prestigio emocional de alta gama'
+    ],
+    process: [
+      '1. Descubrimiento Estratégico y Clasificación de Valores Centrales',
+      '2. Moodboards, definición de tonos y estudio de combinaciones tipográficas',
+      '3. Bocetos de conceptos visuales, refinamiento y maquetación de prueba',
+      '4. Entrega de un ecosistema de marca sólido y guía de activos digitales'
+    ]
+  },
+  {
+    id: 'service-2',
+    title: 'Diseño de Empaques',
+    description: 'Diseños táctiles y de lujo premium que fusionan la ciencia de materiales ecológicos con un diseño comercial sofisticado.',
+    benefits: [
+      'Cajas de lujo personalizadas e ingeniería de etiquetas cosméticas',
+      'Énfasis riguroso en papeles reciclados de alto gramaje y texturas premium',
+      'Estructuras de plegado geométrico precisas y troquelados de alta gama',
+      'Colaboraciones con proveedores boutique de materiales sostenibles en todo el mundo'
+    ],
+    process: [
+      '1. Investigación de Materiales y Geometría del Envase',
+      '2. Pruebas de etiquetado visual, paletas de colores y acabados (relieve/foil)',
+      '3. Abastecimiento de polímeros orgánicos compostables y de mármol',
+      '4. Planos de fabricación finales y archivos de arte detallados'
+    ]
+  },
+  {
+    id: 'service-3',
+    title: 'Web y Digital',
+    description: 'Interfaces digitales adaptables y fluidas centradas en una navegación ultra-minimalista y un alto rendimiento.',
+    benefits: [
+      'Diseño de experiencia de usuario hermoso que honra el espacio en blanco y la claridad',
+      'Animaciones y transiciones premium centradas en guiar la atención',
+      'Pantallas adaptables diseñadas con un escalado tipográfico nítido',
+      'Componentes interactivos modernos (galleries, custom planners, viewers)'
+    ],
+    process: [
+      '1. Validación de arquitectura visual, mapas de flujo y diagramas de wireframes',
+      '2. Diseños estéticos de pantallas de interfaz con calidad de Figma',
+      '3. Modelos de interacción, transiciones y programación de movimiento fluido',
+      '4. Entrega de código de producción o colaboración con equipos de desarrollo'
+    ]
+  },
+  {
+    id: 'service-4',
+    title: 'Ilustración Personalizada',
+    description: 'Texturas orgánicas personalizadas, arte digital cinético y dibujos a medida creados para aplicaciones de lujo.',
+    benefits: [
+      'Fondos de pantalla personalizados a medida, vectores de ondas líquidas y patrones de líneas premium',
+      'Arte de alta resolución compatible con instalaciones en lienzos de gran escala',
+      'Ilustraciones gráficas editoriales para portadas impresas y mercancía de boutique'
+    ],
+    process: [
+      '1. Análisis del tema, definición de escala y exploración de referencias táctiles',
+      '2. Bloqueo de siluetas, mapas de luz y experimentos con sistemas de degradados',
+      '3. Detallado fino de alta fidelidad y generación de texturas cinéticas viscosas',
+      '4. Entrega de archivos vectoriales o rasterizados de alta resolución y con gradación de color'
+    ]
+  }
+];
+
+// INITIALIZATION
+document.addEventListener('DOMContentLoaded', () => {
+  const projectGrid = document.getElementById('project-grid');
+  const mobileMenuOpenBtn = document.getElementById('mobile-menu-open');
+  const mobileDropdown = document.getElementById('mobile-dropdown');
+  
+  // Drawer Elements
+  const drawerBackdrop = document.getElementById('drawer-backdrop');
+  const projectDrawer = document.getElementById('project-drawer');
+  const trackerDrawer = document.getElementById('tracker-drawer');
+  
+  // Form elements
+  const plannerForm = document.getElementById('planner-form');
+  const plannerFormContainer = document.getElementById('planner-form-container');
+  const formSuccessContainer = document.getElementById('form-success-container');
+  
+  const inputFullName = document.getElementById('form-fullname');
+  const inputEmail = document.getElementById('form-email');
+  const textareaMessage = document.getElementById('form-message');
+  
+  // Inquiry Alignment Hub Desk elements
+  const deskCounterBtn = document.getElementById('desk-counter-btn');
+  const deskCounterBtnMobile = document.getElementById('desk-counter-btn-mobile');
+  const deskCountLabels = document.querySelectorAll('.desk-count');
+  const inquiriesListContainer = document.getElementById('inquiries-list-container');
+  
+  // State variables
+  let submittedInquiries = [];
+
+  // Initialize inquiries desk with a default mock if empty
+  const savedInquiries = localStorage.getItem('gabriela_inquiries');
+  if (savedInquiries) {
+    try {
+      submittedInquiries = JSON.parse(savedInquiries);
+    } catch (e) {
+      console.error(e);
+    }
+  } else {
+    const initialMock = {
+      id: 'inq-initial',
+      fullName: 'Alexander Vane',
+      email: 'vane@aperture-atelier.com',
+      serviceType: 'Identidad de Marca',
+      budget: '$15,000 – $30,000',
+      timeline: '2 – 3 Meses',
+      message: 'Buscando crear un concepto de marca arquitectónica atemporal para nuestras sedes europeas. Nos enamoramos de la ejecución y el diseño de Aura Collective.',
+      status: 'En Revisión',
+      date: '2026-05-28',
+      comment: '¡A Gabriela le encantó esta propuesta! Actualmente coordinando una videollamada de inicio.'
+    };
+    submittedInquiries = [initialMock];
+    localStorage.setItem('gabriela_inquiries', JSON.stringify(submittedInquiries));
+  }
+  updateInquiryCountUI();
+
+  // Load draft values from localStorage
+  inputFullName.value = localStorage.getItem('gabriela_form_fullName') || '';
+  inputEmail.value = localStorage.getItem('gabriela_form_email') || '';
+  textareaMessage.value = localStorage.getItem('gabriela_form_message') || '';
+
+
+
+  // 2. MOBILE MENU DROPDOWN TOGGLE
+  if (mobileMenuOpenBtn) {
+    mobileMenuOpenBtn.addEventListener('click', () => {
+      const isOpen = mobileDropdown.classList.toggle('open');
+      mobileMenuOpenBtn.innerHTML = isOpen 
+        ? `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`
+        : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+    });
+
+    mobileDropdown.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDropdown.classList.remove('open');
+        mobileMenuOpenBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+      });
+    });
+  }
+
+  // Helper to set up interactions on project cards (3D hover and click events)
+  function setupCardInteractions(elements) {
+    elements.forEach(card => {
+      if (card.dataset.bound === 'true') return;
+      card.dataset.bound = 'true';
+
+      card.addEventListener('click', () => {
+        const id = card.getAttribute('data-id');
+        const proj = PROJECTS.find(p => p.id === id);
+        if (proj) openProjectDrawer(proj);
+      });
+
+      let cachedRect = null;
+      card.addEventListener('mouseenter', () => {
+        card.classList.add('is-hovered');
+        projectGrid.classList.add('has-hovered-sibling');
+        cachedRect = card.getBoundingClientRect();
+        if (typeof updateCardTransform === 'function') {
+          updateCardTransform(card);
+        }
+      });
+
+      card.addEventListener('mousemove', (e) => {
+        if (!cachedRect) cachedRect = card.getBoundingClientRect();
+        const x = e.clientX - cachedRect.left;
+        const y = e.clientY - cachedRect.top;
+        const centerX = cachedRect.width / 2;
+        const centerY = cachedRect.height / 2;
+        const rotateX = ((centerY - y) / centerY) * 10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.04, 1.04, 1.04) translateY(-8px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('is-hovered');
+        projectGrid.classList.remove('has-hovered-sibling');
+        card.style.transform = '';
+        cachedRect = null;
+        if (typeof updateCardTransform === 'function') {
+          updateCardTransform(card);
+        }
+      });
+    });
+  }
+
+  // 3. RENDER PORTFOLIO PROJECTS WITH FILTERING & CLONING
+  function renderProjects(filterCategory = 'all', subBrandFilter = 'all') {
+    if (!projectGrid) return;
+    
+    // Forzamos el reset de cachedCards para que getCachedCards() reconstruya el cache con las tarjetas activas
+    cachedCards = null;
+
+    // Controlar visibilidad del sub-filtro de identidad de marca y catálogo
+    const subFilterBar = document.getElementById('brand-sub-filters');
+    const catalogContainer = document.getElementById('brand-identities-catalog');
+
+    if (filterCategory === 'marca') {
+      if (subFilterBar) subFilterBar.style.display = 'flex';
+      if (projectGrid) projectGrid.style.display = 'none';
+      if (catalogContainer) {
+        catalogContainer.style.display = 'block';
+        renderBrandCatalog(subBrandFilter);
+      }
+      return; // Detener renderizado estándar
+    } else {
+      if (subFilterBar) subFilterBar.style.display = 'none';
+      if (catalogContainer) catalogContainer.style.display = 'none';
+      if (projectGrid) projectGrid.style.display = 'flex';
+    }
+
+    let filteredProjects = PROJECTS;
+    if (filterCategory !== 'all') {
+      filteredProjects = PROJECTS.filter(project => {
+        const cat = project.category.toLowerCase();
+        if (filterCategory === 'redes') {
+          return project.image.includes('flyers-redes');
+        } else if (filterCategory === 'posters') {
+          return project.image.includes('publicidad');
+        } else if (filterCategory === 'marca') {
+          const isBrand = project.image.includes('identidad-marca');
+          if (!isBrand) return false;
+          if (subBrandFilter === 'alcantara') {
+            return project.id.startsWith('identidad-1-p');
+          }
+          return true;
+        } else if (filterCategory === 'ilustracion') {
+          return cat === 'ilustración';
+        } else if (filterCategory === 'web') {
+          return cat === 'diseño web';
+        }
+        return false;
+      });
+    } else {
+      // En la categoría "Todos", excluimos las páginas individuales del manual de identidad de marca
+      filteredProjects = PROJECTS.filter(project => {
+        return !project.image.includes('identidad-marca');
+      });
+    }
+    
+    projectGrid.innerHTML = filteredProjects.map((project) => {
+      const mdColSpan = 'col-span-4';
+      const aspectClass = 'aspect-equal';
+      
+      return `
+        <div class="project-card ${mdColSpan}" data-id="${project.id}">
+          <!-- Figma Card Blueprint guides -->
+          <div class="figma-card-guides">
+            <div class="figma-card-bounds">
+              <span class="figma-card-label">Frame "${project.title}"</span>
+              <span class="figma-card-dims">W: 380px H: 285px</span>
+              <div class="figma-node top-left"></div>
+              <div class="figma-node top-right"></div>
+              <div class="figma-node bottom-left"></div>
+              <div class="figma-node bottom-right"></div>
+            </div>
+          </div>
+          <div class="img-wrapper ${aspectClass}">
+            <div class="overlay"></div>
+            <img src="${project.image}" alt="${project.title}" referrerpolicy="no-referrer" loading="lazy" />
+            <div class="project-banner">
+              <div>
+                <span class="project-category">${project.category}</span>
+                <h3 class="project-card-title">${project.title}</h3>
+              </div>
+              <div class="arrow-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </div>
+            </div>
+            <div class="year-tag">${project.year}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Enlazar eventos a tarjetas originales
+    setupCardInteractions(projectGrid.querySelectorAll('.project-card'));
+
+    // Duplicar elementos para scroll infinito de manera robusta
+    const cards = Array.from(projectGrid.children);
+    if (cards.length > 0) {
+      // Si hay pocas tarjetas, las duplicamos varias veces para llenar el contenedor y evitar estiramientos o saltos
+      const minCards = 6;
+      let totalAdded = 0;
+      
+      // Añadimos suficientes copias para alcanzar al menos minCards antes de hacer el set final de clones para scroll infinito
+      while (projectGrid.children.length < minCards) {
+        cards.forEach(card => {
+          const clone = card.cloneNode(true);
+          projectGrid.appendChild(clone);
+        });
+      }
+      
+      // Ahora duplicamos todos los que hay para la parte del bucle infinito sin fin
+      const currentCards = Array.from(projectGrid.children);
+      currentCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        projectGrid.appendChild(clone);
+      });
+    }
+
+    // Enlazar eventos a todas las tarjetas (incluyendo clones)
+    setupCardInteractions(projectGrid.querySelectorAll('.project-card'));
+
+    // Reiniciar posición de scroll
+    projectGrid.scrollLeft = 0;
+  }
+  renderProjects();
+
+  // 3.6 FILTER BAR INTERACTION
+  const filterTabs = document.querySelectorAll('.filter-bar:not(.brand-sub-filters) .filter-tab');
+  const subFilterTabs = document.querySelectorAll('.brand-sub-filters .filter-tab');
+
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const category = tab.getAttribute('data-category');
+      
+      // Reset sub-filters active state
+      subFilterTabs.forEach(st => st.classList.remove('active'));
+      renderProjects(category, 'all');
+    });
+  });
+
+  subFilterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      subFilterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const brand = tab.getAttribute('data-brand');
+      renderProjects('marca', brand);
+    });
+  });
+
+  // Enlazar evento de regreso al catálogo
+  const backToCatalogBtn = document.getElementById('back-to-catalog-btn');
+  if (backToCatalogBtn) {
+    backToCatalogBtn.addEventListener('click', () => {
+      renderBrandCatalog('all');
+    });
+  }
+
+  // Enlazar eventos del flipbook interactivo
+  const fbPrevBtn = document.getElementById('fb-prev-btn');
+  const fbNextBtn = document.getElementById('fb-next-btn');
+  if (fbPrevBtn) fbPrevBtn.addEventListener('click', () => turnFlipbookPage(-1));
+  if (fbNextBtn) fbNextBtn.addEventListener('click', () => turnFlipbookPage(1));
+
+  // Soporte de navegación por teclado para el manual
+  document.addEventListener('keydown', (e) => {
+    const detailView = document.getElementById('brand-detail-view');
+    if (detailView && detailView.style.display !== 'none') {
+      if (e.key === 'ArrowLeft') {
+        turnFlipbookPage(-1);
+      } else if (e.key === 'ArrowRight') {
+        turnFlipbookPage(1);
+      }
+    }
+  });
+
+  // 3.5 AIRPORT STYLE AUTO-SCROLL
+  let autoScrollActive = true;
+  let scrollSpeed = 1.2; // velocidad del marquesina estilo aeropuerto
+
+  if (projectGrid) {
+    const pauseScroll = () => autoScrollActive = false;
+    const resumeScroll = () => autoScrollActive = true;
+    
+    projectGrid.addEventListener('mouseenter', pauseScroll);
+    projectGrid.addEventListener('mouseleave', resumeScroll);
+    projectGrid.addEventListener('touchstart', pauseScroll, {passive: true});
+    projectGrid.addEventListener('touchend', resumeScroll);
+
+    let scrollTimeout;
+    projectGrid.addEventListener('wheel', () => {
+      pauseScroll();
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(resumeScroll, 1000);
+    }, {passive: true});
+
+    const animateScroll = () => {
+      if (autoScrollActive && projectGrid.children.length > 0) {
+        projectGrid.scrollLeft += scrollSpeed;
+        
+        const gap = parseFloat(getComputedStyle(projectGrid).gap) || 0;
+        const resetPoint = (projectGrid.scrollWidth + gap) / 2;
+        
+        if (projectGrid.scrollLeft >= resetPoint) {
+          projectGrid.scrollLeft -= resetPoint;
+        }
+      }
+      requestAnimationFrame(animateScroll);
+    };
+    requestAnimationFrame(animateScroll);
+  }
+
+  // 4. PROJECT DETAIL DRAWER
+  function openProjectDrawer(proj) {
+    if (!projectDrawer) return;
+    
+    const isCarousel = proj.images && proj.images.length > 0;
+    const startIndex = isCarousel ? Math.max(0, proj.images.indexOf(proj.image)) : 0;
+    const initialImage = isCarousel ? proj.images[startIndex] : proj.image;
+
+    projectDrawer.innerHTML = `
+      <button class="project-drawer-close-floating" id="project-drawer-close" aria-label="Cerrar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="drawer-image-fullscreen-container">
+        <img src="${initialImage}" alt="${proj.title}" class="drawer-image-fullscreen" id="drawer-img" referrerpolicy="no-referrer" />
+      </div>
+      ${isCarousel ? `
+        <button class="carousel-nav-btn carousel-nav-prev" id="carousel-prev" aria-label="Anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="carousel-nav-btn carousel-nav-next" id="carousel-next" aria-label="Siguiente">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+        <div class="carousel-counter" id="carousel-counter">${startIndex + 1} / ${proj.images.length}</div>
+      ` : ''}
+    `;
+
+    const closeBtn = projectDrawer.querySelector('#project-drawer-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeAllDrawers);
+    }
+
+    if (isCarousel) {
+      let currentIndex = startIndex;
+      const drawerImg = projectDrawer.querySelector('#drawer-img');
+      const prevBtn = projectDrawer.querySelector('#carousel-prev');
+      const nextBtn = projectDrawer.querySelector('#carousel-next');
+      const counter = projectDrawer.querySelector('#carousel-counter');
+
+      const updateImage = (index) => {
+        drawerImg.style.opacity = '0';
+        setTimeout(() => {
+          drawerImg.src = proj.images[index];
+          counter.textContent = `${index + 1} / ${proj.images.length}`;
+          drawerImg.style.opacity = '1';
+        }, 150);
+      };
+
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + proj.images.length) % proj.images.length;
+        updateImage(currentIndex);
+      });
+
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % proj.images.length;
+        updateImage(currentIndex);
+      });
+
+      // Keyboard support
+      const handleKeyDown = (e) => {
+        if (e.key === 'ArrowLeft') {
+          currentIndex = (currentIndex - 1 + proj.images.length) % proj.images.length;
+          updateImage(currentIndex);
+        } else if (e.key === 'ArrowRight') {
+          currentIndex = (currentIndex + 1) % proj.images.length;
+          updateImage(currentIndex);
+        }
+      };
+      document.addEventListener('keydown', handleKeyDown);
+
+      // Clean up event listener when closed
+      const originalClose = closeAllDrawers;
+      closeAllDrawers = () => {
+        document.removeEventListener('keydown', handleKeyDown);
+        originalClose();
+        closeAllDrawers = originalClose; // restore
+      };
+    }
+
+    drawerBackdrop.classList.add('active');
+    projectDrawer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Close drawers helper
+  function closeAllDrawers() {
+    drawerBackdrop.classList.remove('active');
+    projectDrawer.classList.remove('active');
+    trackerDrawer.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  drawerBackdrop.addEventListener('click', closeAllDrawers);
+
+  // Bind Empaque y Embalaje service card to open its project image gallery
+  const servicePackaging = document.getElementById('service-packaging');
+  if (servicePackaging) {
+    servicePackaging.addEventListener('click', () => {
+      openProjectDrawer({
+        title: 'Empaque y Embalaje',
+        images: [
+          './images/empaque_1.jpg',
+          './images/empaque_2.jpg',
+          './images/empaque_3.jpg',
+          './images/empaque_4.jpg',
+          './images/empaque_5.jpg',
+          './images/empaque_6.jpg'
+        ]
+      });
+    });
+  }
+
+  // Bind Identidad de Marca service card to open its project image gallery
+  const serviceBrand = document.getElementById('service-brand');
+  if (serviceBrand) {
+    serviceBrand.addEventListener('click', () => {
+      openProjectDrawer({
+        title: 'Identidad de Marca',
+        images: [
+          './images/Manual de Marca [Corregido]_Página_01.jpg',
+          './images/Manual de Marca [Corregido]_Página_02.jpg',
+          './images/Manual de Marca [Corregido]_Página_03.jpg',
+          './images/Manual de Marca [Corregido]_Página_04.jpg',
+          './images/Manual de Marca [Corregido]_Página_05.jpg',
+          './images/Manual de Marca [Corregido]_Página_06.jpg',
+          './images/Manual de Marca [Corregido]_Página_07.jpg',
+          './images/Manual de Marca [Corregido]_Página_08.jpg',
+          './images/Manual de Marca [Corregido]_Página_09.jpg',
+          './images/Manual de Marca [Corregido]_Página_10.jpg',
+          './images/Manual de Marca [Corregido]_Página_11.jpg',
+          './images/Manual de Marca [Corregido]_Página_12.jpg',
+          './images/Manual de Marca [Corregido]_Página_13.jpg',
+          './images/Manual de Marca [Corregido]_Página_14.jpg',
+          './images/Manual de Marca [Corregido]_Página_15.jpg',
+          './images/Manual de Marca [Corregido]_Página_16.jpg',
+          './images/Manual de Marca [Corregido]_Página_17.jpg',
+          './images/Manual de Marca [Corregido]_Página_18.jpg',
+          './images/Manual de Marca [Corregido]_Página_19.jpg',
+          './images/Manual de Marca [Corregido]_Página_20.jpg',
+          './images/Manual de Marca [Corregido]_Página_21.jpg',
+          './images/Manual de Marca [Corregido]_Página_22.jpg',
+          './images/Manual de Marca [Corregido]_Página_23.jpg',
+          './images/Manual de Marca [Corregido]_Página_24.jpg'
+        ]
+      });
+    });
+  }
+
+  // Bind Web y Digital service card to open its project image gallery
+  const serviceWeb = document.getElementById('service-web');
+  if (serviceWeb) {
+    serviceWeb.addEventListener('click', () => {
+      openProjectDrawer({
+        title: 'Web y Digital',
+        images: [
+          './images/pagina web curso.jpg'
+        ]
+      });
+    });
+  }
+
+  // Bind Ilustración service card to open its project image gallery
+  const serviceIllustration = document.getElementById('service-illustration');
+  if (serviceIllustration) {
+    serviceIllustration.addEventListener('click', () => {
+      openProjectDrawer({
+        title: 'Ilustración',
+        images: [
+          './images/Amistad CTD(NUEVO) (1).jpg',
+          './images/IA para adulto.jpg'
+        ]
+      });
+    });
+  }
+
+  // 5. PLANNER FORM BINDING & SAVING
+  const handleInputChange = (key, element) => {
+    element.addEventListener('input', () => {
+      localStorage.setItem(`gabriela_form_${key}`, element.value);
+    });
+  };
+
+  handleInputChange('fullName', inputFullName);
+  handleInputChange('email', inputEmail);
+  handleInputChange('message', textareaMessage);
+
+  // Form Submit handler
+  if (plannerForm) {
+    plannerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const fullName = inputFullName.value;
+      const email = inputEmail.value;
+      const message = textareaMessage.value;
+      
+      if (!fullName || !email || !message) return;
+
+      // Create new inquiry object
+      const newInquiry = {
+        id: `inq-${Date.now()}`,
+        fullName,
+        email,
+        message,
+        serviceType: 'Lista de Consultas Seleccionadas',
+        budget: 'Escala de Zona Personalizada',
+        timeline: 'Ciclo de Lanzamiento Objetivo',
+        status: 'Recibido',
+        date: new Date().toISOString().split('T')[0]
+      };
+
+      submittedInquiries = [newInquiry, ...submittedInquiries];
+      localStorage.setItem('gabriela_inquiries', JSON.stringify(submittedInquiries));
+      updateInquiryCountUI();
+
+      // Show success view receipt details
+      renderSuccessReceipt(newInquiry);
+      plannerFormContainer.style.display = 'none';
+      formSuccessContainer.style.display = 'block';
+
+      // Schedule simulation: status shift after 15 seconds
+      setTimeout(() => {
+        submittedInquiries = submittedInquiries.map(item => {
+          if (item.id === newInquiry.id) {
+            return {
+              ...item,
+              status: 'En Revisión',
+              comment: 'La propuesta está siendo revisada por Gabriela. Respuesta estimada dentro de las próximas 24 horas.'
+            };
+          }
+          return item;
+        });
+        localStorage.setItem('gabriela_inquiries', JSON.stringify(submittedInquiries));
+        renderInquiriesTrackerList();
+      }, 15000);
+    });
+  }
+
+  // Success view helper
+  function renderSuccessReceipt(inq) {
+    const receiptBox = formSuccessContainer.querySelector('.receipt-box');
+    receiptBox.innerHTML = `
+      <div class="receipt-item"><span>CLIENTE:</span> ${inq.fullName}</div>
+      <div class="receipt-item"><span>TIPO DE SERVICIO:</span> ${inq.serviceType}</div>
+      <div class="receipt-item"><span>POSICIÓN EN COLA:</span> #0${submittedInquiries.length}</div>
+    `;
+
+    const trackBtn = formSuccessContainer.querySelector('#btn-success-track');
+    trackBtn.onclick = () => {
+      openTrackerDrawer();
+    };
+
+    const resetBtn = formSuccessContainer.querySelector('#btn-success-reset');
+    resetBtn.onclick = () => {
+      inputFullName.value = '';
+      inputEmail.value = '';
+      textareaMessage.value = '';
+      
+      localStorage.removeItem('gabriela_form_fullName');
+      localStorage.removeItem('gabriela_form_email');
+      localStorage.removeItem('gabriela_form_message');
+
+      formSuccessContainer.style.display = 'none';
+      plannerFormContainer.style.display = 'block';
+    };
+  }
+
+  // 6. INQUIRY ALIGNMENT HUB DESK
+  function openTrackerDrawer() {
+    renderInquiriesTrackerList();
+    drawerBackdrop.classList.add('active');
+    trackerDrawer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  if (deskCounterBtn) deskCounterBtn.addEventListener('click', openTrackerDrawer);
+  if (deskCounterBtnMobile) deskCounterBtnMobile.addEventListener('click', openTrackerDrawer);
+
+  const trackerCloseBtn = document.getElementById('tracker-drawer-close');
+  if (trackerCloseBtn) trackerCloseBtn.addEventListener('click', closeAllDrawers);
+
+  // Render tracker inquiries list
+  function renderInquiriesTrackerList() {
+    if (!inquiriesListContainer) return;
+
+    if (submittedInquiries.length === 0) {
+      inquiriesListContainer.innerHTML = `
+        <div class="tracker-empty-state">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <p class="tracker-empty-title">No hay consultas en cola</p>
+          <p class="tracker-empty-sub">Completa el planificador de proyectos para interactuar.</p>
+        </div>
+      `;
+      return;
+    }
+
+    inquiriesListContainer.innerHTML = submittedInquiries.map(inq => {
+      let statusClass = 'received';
+      if (inq.status === 'En Revisión' || inq.status === 'In Review') statusClass = 'in-review';
+      if (inq.status === 'Aceptado' || inq.status === 'Accepted') statusClass = 'accepted';
+
+      const commentHtml = inq.comment 
+        ? `<div class="inquiry-comment-box"><strong>Nota: </strong> ${inq.comment}</div>` 
+        : '';
+
+      return `
+        <div class="inquiry-card">
+          <div class="inquiry-card-header">
+            <div>
+              <h4 class="inquiry-client-name">${inq.fullName}</h4>
+              <p class="inquiry-client-email">${inq.email}</p>
+            </div>
+            <span class="status-tag ${statusClass}">${inq.status}</span>
+          </div>
+
+          <div class="inquiry-message-box">
+            <p class="inquiry-message-text">"${inq.message}"</p>
+          </div>
+
+          ${commentHtml}
+
+          <button class="inquiry-delete-btn" data-id="${inq.id}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+            Eliminar
+          </button>
+        </div>
+      `;
+    }).join('');
+
+    // Bind delete inquiry click handlers
+    inquiriesListContainer.querySelectorAll('.inquiry-delete-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        submittedInquiries = submittedInquiries.filter(item => item.id !== id);
+        localStorage.setItem('gabriela_inquiries', JSON.stringify(submittedInquiries));
+        updateInquiryCountUI();
+        renderInquiriesTrackerList();
+      });
+    });
+
+  }
+
+  function updateInquiryCountUI() {
+    deskCountLabels.forEach(label => {
+      label.textContent = submittedInquiries.length;
+    });
+  }
+
+  // 3D Tilt Effect on Specialties/Services cards
+  const serviceCards = document.querySelectorAll('.service-card-static');
+  serviceCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      if (window.innerWidth < 768) {
+        card.style.transform = '';
+        return;
+      }
+      
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = ((centerY - y) / centerY) * 10;
+      const rotateY = ((x - centerX) / centerX) * 10;
+      
+      card.style.transform = `translateY(-8px) scale(1.03) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+});
+
+
+  // Page-wide Figma Blueprint Scroll Effect
+  const elementsToTrack = [
+    { selector: '.hero', id: 'hero' },
+    { selector: '#work', id: 'work' },
+    { selector: '#about', id: 'about' },
+    { selector: '#services', id: 'services' },
+    { selector: '#contact', id: 'contact' }
+  ];
+
+  // Lazy cache to store DOM elements, preventing expensive document.querySelectorAll or querySelector on scroll
+  let cachedCards = null;
+  let cachedSections = null;
+  let observer = null;
+  const figmaValW = document.querySelector('.figma-val-w');
+  const figmaValH = document.querySelector('.figma-val-h');
+
+  function getCachedCards() {
+    if (!cachedCards || cachedCards.length === 0) {
+      cachedCards = Array.from(document.querySelectorAll('.project-card')).map((card, idx) => {
+        return {
+          el: card,
+          img: card.querySelector('img'),
+          guides: card.querySelector('.figma-card-guides'),
+          speedFactor: idx % 2 === 0 ? 0.04 : 0.12,
+          isVisible: false
+        };
+      });
+
+      // IntersectionObserver flags off-screen cards so we skip layout reads on them
+      if ('IntersectionObserver' in window) {
+        observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const card = cachedCards.find(c => c.el === entry.target);
+            if (card) {
+              card.isVisible = entry.isIntersecting;
+            }
+          });
+        }, { rootMargin: '120px 0px' });
+        
+        cachedCards.forEach(card => observer.observe(card.el));
+      } else {
+        cachedCards.forEach(card => card.isVisible = true);
+      }
+    }
+    return cachedCards;
+  }
+
+  function getCachedSections() {
+    if (!cachedSections) {
+      cachedSections = elementsToTrack.map(item => {
+        return {
+          el: document.querySelector(item.selector),
+          id: item.id
+        };
+      }).filter(item => item.el !== null);
+    }
+    return cachedSections;
+  }
+
+  // Backwards-compatible global hover updater using the fast cached card lookup
+  window.updateCardTransform = (cardEl) => {
+    const cards = getCachedCards();
+    const card = cards.find(c => c.el === cardEl);
+    if (!card) return;
+    
+    const rect = card.el.getBoundingClientRect();
+    const cardCenter = rect.top + rect.height / 2;
+    const screenCenter = window.innerHeight / 2;
+    const distance = cardCenter - screenCenter;
+    
+    let translateVal = distance * card.speedFactor;
+    if (translateVal > 50) translateVal = 50;
+    if (translateVal < -50) translateVal = -50;
+    
+    if (card.img) {
+      const isHovered = card.el.classList.contains('is-hovered');
+      const scaleVal = isHovered ? 1.02 : 1.0;
+      card.img.style.transform = `translateY(${translateVal}px) scale(${scaleVal})`;
+    }
+  };
+
+  // Perform scroll calculations scheduled inside requestAnimationFrame to match frame refreshes
+  let scrollScheduled = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollScheduled) {
+      scrollScheduled = true;
+      requestAnimationFrame(updateScrollEffects);
+    }
+  }, { passive: true });
+
+  function updateScrollEffects() {
+    scrollScheduled = false;
+    const windowHeight = window.innerHeight;
+    const scrollY = window.scrollY;
+    
+    // 1. Update Section Scroll Factors
+    const sections = getCachedSections();
+    
+    // Optimize DOM reads: read all bounding rects first before doing any writes to prevent layout thrashing!
+    const sectionRects = sections.map(item => ({
+      item,
+      rect: item.el.getBoundingClientRect()
+    }));
+
+    sectionRects.forEach(({ item, rect }) => {
+      const elementHeight = rect.height;
+      let factor = 0;
+      
+      if (item.id === 'hero') {
+        factor = scrollY / (elementHeight * 0.6);
+      } else {
+        const topVisible = rect.top - windowHeight;
+        if (topVisible < 0) {
+          factor = Math.abs(topVisible) / (windowHeight + elementHeight * 0.25);
+        }
+      }
+      
+      if (factor < 0) factor = 0;
+      if (factor > 1) factor = 1;
+      
+      item.el.style.setProperty('--scroll-factor', factor);
+    });
+
+    // 2. Update Dynamic Coordinates for Hero Blueprint Numbers
+    const heroSec = sections.find(s => s.id === 'hero');
+    if (heroSec && figmaValW && figmaValH) {
+      const factor = parseFloat(heroSec.el.style.getPropertyValue('--scroll-factor')) || 0;
+      const currentWidth = Math.round(980 + factor * 120);
+      const currentHeight = Math.round(240 + factor * 80);
+      figmaValW.textContent = `${currentWidth}px`;
+      figmaValH.textContent = `${currentHeight}px`;
+    }
+
+    // 3. Parallax Floating Cards and Guides (Only for Visible Cards)
+    const cards = getCachedCards();
+    
+    // Optimize DOM reads: get all rects for visible cards first before applying transformations
+    const visibleCardRects = cards
+      .filter(card => card.isVisible)
+      .map(card => ({
+        card,
+        rect: card.el.getBoundingClientRect()
+      }));
+
+    visibleCardRects.forEach(({ card, rect }) => {
+      const cardCenter = rect.top + rect.height / 2;
+      const screenCenter = windowHeight / 2;
+      const distance = cardCenter - screenCenter;
+      
+      let translateVal = distance * card.speedFactor;
+      if (translateVal > 50) translateVal = 50;
+      if (translateVal < -50) translateVal = -50;
+      
+      if (card.img) {
+        const isHovered = card.el.classList.contains('is-hovered');
+        const scaleVal = isHovered ? 1.02 : 1.0;
+        card.img.style.transform = `translateY(${translateVal}px) scale(${scaleVal})`;
+      }
+      
+      if (card.guides) {
+        const topVisible = rect.top - windowHeight;
+        let cardFactor = 0;
+        if (topVisible < 0) {
+          cardFactor = Math.abs(topVisible) / (windowHeight * 0.75);
+        }
+        if (cardFactor < 0) cardFactor = 0;
+        if (cardFactor > 1) cardFactor = 1;
+        
+        card.guides.style.setProperty('--card-scroll', cardFactor);
+      }
+    });
+
+    // 4. Stacking Cards & Scroll Snapping Cover Calculations
+    for (let i = 0; i < sectionRects.length; i++) {
+      const current = sectionRects[i].item;
+      const nextData = sectionRects[i + 1];
+      let coverProgress = 0;
+
+      if (nextData) {
+        const nextRect = nextData.rect;
+        coverProgress = 1 - (nextRect.top / windowHeight);
+        
+        if (coverProgress < 0) coverProgress = 0;
+        if (coverProgress > 1) coverProgress = 1;
+      }
+      current.el.style.setProperty('--cover-progress', coverProgress);
+    }
+
+    // 5. Active Card Class Trigger for Content Reveals
+    const activeThreshold = 250; // px (Se incrementó para disparar la animación de entrada antes)
+    let activeIndex = 0;
+    sectionRects.forEach(({ rect }, idx) => {
+      if (rect.top <= activeThreshold) {
+        activeIndex = idx;
+      }
+    });
+
+    sections.forEach((item, idx) => {
+      if (idx === activeIndex) {
+        item.el.classList.add('active-card');
+      } else {
+        item.el.classList.remove('active-card');
+      }
+    });
+
+    // 6. Active Navigation Link State Styling
+    const activeSection = sections[activeIndex];
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (activeSection && href === `#${activeSection.id}`) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  // Initial call on load to set up card calculations and active classes
+  updateScrollEffects();
+
+</script>
+  </body>
+</html>

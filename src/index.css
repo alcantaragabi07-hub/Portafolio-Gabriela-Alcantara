@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", sans-serif;
+
+  --color-brand-primary: #f2f2f2;
+  --color-brand-secondary: #0f16a5;
+  --color-brand-accent: #2a33b7;
+  --color-brand-dark: #000000;
+  --color-brand-surface: #0a0a0a;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f2f2f2;
+}
+
+/* Base custom cursors or page effects */
+html {
+  scroll-behavior: smooth;
+  background-color: #000000;
+}
+
+body {
+  color: #f2f2f2;
+  overflow-x: hidden;
+}
+
+/* Radial Glow Animation background */
+.radial-grid {
+  background-image: radial-gradient(circle at 50% 30%, rgba(15, 22, 165, 0.15) 0%, transparent 60%);
+}
+
