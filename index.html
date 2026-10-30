@@ -2718,7 +2718,6 @@ body:has(#contact.active-card) .whatsapp-float {
               </div>
               <div class="overlay"></div>
               <video autoplay loop muted playsinline style="width: 100%; height: 480px; object-fit: cover; display: block;">
-                <source src="./video/profile_video.mp4" type="video/mp4">
                 <source src="./video/Character_drinks_water,_winks_202606081853.webm" type="video/webm">
                 Tu navegador no soporta este video.
               </video>
@@ -4139,7 +4138,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!projectGrid) return;
     
     // Forzamos el reset de cachedCards para que getCachedCards() reconstruya el cache con las tarjetas activas
-    cachedCards = null;
+    if (typeof resetCachedCards === 'function') {
+      resetCachedCards();
+    } else {
+      cachedCards = null;
+    }
 
     // Controlar visibilidad del sub-filtro de identidad de marca y catálogo
     const subFilterBar = document.getElementById('brand-sub-filters');
@@ -4446,12 +4449,14 @@ document.addEventListener('DOMContentLoaded', () => {
       openProjectDrawer({
         title: 'Empaque y Embalaje',
         images: [
-          './images/empaque_1.jpg',
-          './images/empaque_2.jpg',
-          './images/empaque_3.jpg',
-          './images/empaque_4.jpg',
-          './images/empaque_5.jpg',
-          './images/empaque_6.jpg'
+          './images/empaques/caja1.webp',
+          './images/empaques/caja2.webp',
+          './images/empaques/caja-gta1.webp',
+          './images/empaques/caja-gta2.webp',
+          './images/empaques/embalaje1.jpg',
+          './images/empaques/embalaje2.webp',
+          './images/empaques/galleta-pistacho.webp',
+          './images/empaques/galleta-pistacho2.webp'
         ]
       });
     });
@@ -4464,30 +4469,30 @@ document.addEventListener('DOMContentLoaded', () => {
       openProjectDrawer({
         title: 'Identidad de Marca',
         images: [
-          './images/Manual de Marca [Corregido]_Página_01.jpg',
-          './images/Manual de Marca [Corregido]_Página_02.jpg',
-          './images/Manual de Marca [Corregido]_Página_03.jpg',
-          './images/Manual de Marca [Corregido]_Página_04.jpg',
-          './images/Manual de Marca [Corregido]_Página_05.jpg',
-          './images/Manual de Marca [Corregido]_Página_06.jpg',
-          './images/Manual de Marca [Corregido]_Página_07.jpg',
-          './images/Manual de Marca [Corregido]_Página_08.jpg',
-          './images/Manual de Marca [Corregido]_Página_09.jpg',
-          './images/Manual de Marca [Corregido]_Página_10.jpg',
-          './images/Manual de Marca [Corregido]_Página_11.jpg',
-          './images/Manual de Marca [Corregido]_Página_12.jpg',
-          './images/Manual de Marca [Corregido]_Página_13.jpg',
-          './images/Manual de Marca [Corregido]_Página_14.jpg',
-          './images/Manual de Marca [Corregido]_Página_15.jpg',
-          './images/Manual de Marca [Corregido]_Página_16.jpg',
-          './images/Manual de Marca [Corregido]_Página_17.jpg',
-          './images/Manual de Marca [Corregido]_Página_18.jpg',
-          './images/Manual de Marca [Corregido]_Página_19.jpg',
-          './images/Manual de Marca [Corregido]_Página_20.jpg',
-          './images/Manual de Marca [Corregido]_Página_21.jpg',
-          './images/Manual de Marca [Corregido]_Página_22.jpg',
-          './images/Manual de Marca [Corregido]_Página_23.jpg',
-          './images/Manual de Marca [Corregido]_Página_24.jpg'
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_01.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_02.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_03.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_04.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_05.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_06.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_07.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_08.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_09.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_10.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_11.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_12.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_13.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_14.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_15.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_16.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_17.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_18.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_19.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_20.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_21.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_22.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_23.jpg',
+          './images/identidad-marca/identidad-1/Manual de Marca [Corregido]_Página_24.jpg'
         ]
       });
     });
@@ -4500,7 +4505,7 @@ document.addEventListener('DOMContentLoaded', () => {
       openProjectDrawer({
         title: 'Web y Digital',
         images: [
-          './images/pagina web curso.jpg'
+          './images/flyers-redes/pagina web curso.jpg'
         ]
       });
     });
@@ -4513,8 +4518,8 @@ document.addEventListener('DOMContentLoaded', () => {
       openProjectDrawer({
         title: 'Ilustración',
         images: [
-          './images/Amistad CTD(NUEVO) (1).jpg',
-          './images/IA para adulto.jpg'
+          './images/flyers-redes/Amistad CTD(NUEVO) (1).jpg',
+          './images/flyers-redes/IA para adulto.jpg'
         ]
       });
     });
@@ -4737,8 +4742,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const figmaValW = document.querySelector('.figma-val-w');
   const figmaValH = document.querySelector('.figma-val-h');
 
+  function resetCachedCards() {
+    if (observer) {
+      observer.disconnect();
+      observer = null;
+    }
+    cachedCards = null;
+  }
+
   function getCachedCards() {
     if (!cachedCards || cachedCards.length === 0) {
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
       cachedCards = Array.from(document.querySelectorAll('.project-card')).map((card, idx) => {
         return {
           el: card,
@@ -4750,10 +4767,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       // IntersectionObserver flags off-screen cards so we skip layout reads on them
-      if ('IntersectionObserver' in window) {
+      if ('IntersectionObserver' in window && cachedCards.length > 0) {
         observer = new IntersectionObserver((entries) => {
+          if (!cachedCards || !Array.isArray(cachedCards)) return;
           entries.forEach(entry => {
-            const card = cachedCards.find(c => c.el === entry.target);
+            const card = cachedCards ? cachedCards.find(c => c.el === entry.target) : null;
             if (card) {
               card.isVisible = entry.isIntersecting;
             }
